@@ -1,0 +1,38 @@
+form {
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+}
+
+label {
+   font-size: 1.5rem;
+   margin-right: 5rem;
+   cursor: pointer;
+   margin-top: 1.25rem;
+}
+
+input {
+   font-size: 1.5rem;
+   background-color: transparent;
+   outline: none;
+   outline-style: none;
+   margin-top: 1.25rem;
+   border: none;
+   border-bottom: solid #555 1px;
+}
+
+.invalid {
+   border-bottom: solid red 2px;
+}
+
+.valid {
+   border-bottom: solid green 2px;
+}
+
+form .btns {
+   margin-top: 4rem;
+   grid-column: span 2;
+}
+
+form button:disabled {
+   background-color: #BBB;
+}

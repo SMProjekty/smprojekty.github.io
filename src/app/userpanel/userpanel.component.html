@@ -1,0 +1,18 @@
+<div class="content">
+   <h1>Witaj, {{userData.Name}} {{userData.LastName}}</h1>
+   <div class="div_buttons">
+      <button class="btn" routerLink="/makevisit">Umów wizytę</button>
+      <button class="btn" routerLink="/visithistory">Historia wizyt</button>
+      <button class="btn" routerLink="/login">Wyloguj</button>
+   </div>
+   <div class="grey_list">
+      <h2>Kolejne wizyty</h2>
+      <ul>
+         <li *ngFor="let visit of visits">
+            <div class="date">{{visit.Ddate}}</div>
+            <div class="type">{{services[visit.ServiceeId-1].Name}}</div>
+            <button (click)="delVisit(visit.VisitId)">Anuluj wizytę</button>
+         </li>
+      </ul>
+   </div>
+</div>

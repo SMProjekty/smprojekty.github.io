@@ -1,0 +1,33 @@
+<div class="content">
+   <h1>Wybierz termin i usługę</h1>
+   <div class="grey_list">
+      <form [formGroup]="visitForm" (ngSubmit)="submitHandler()">
+         <label>Godzina</label>
+         <input type="time" id="time" formControlName="hour">
+         <label>Data</label>
+         <input type="date" id="date" formControlName="date">
+      
+         <div class="lighter">
+
+            <div *ngFor="let service of services; let i = index">
+               <label for="s{{ service.ServiceeId }}">
+                  <input id="s{{ service.ServiceeId }}" [value] = 'service.ServiceeId' type="radio" formControlName="type">
+                  {{ services[i].Name }} {{ services[i].Price }} zł
+               </label>
+            </div>
+
+         </div>
+         <div class="div_buttons">
+            <button class="btn" routerLink="/makevisit">Umów wizytę</button>
+            <button class="btn" routerLink="/userpanel">Wstecz</button>
+         </div>
+      </form>
+   </div>
+</div>
+
+<!-- <div *ngFor="let enum of enum_details">
+   <label for="enum_answer_{{enum.name}}">
+     <input id="enum_answer_{{enum.name}}" [value]='enum.name' type="radio" name="enums" [(ngModel)]="radioSelected">
+     {{enum.name}}
+   </label>
+ </div> -->

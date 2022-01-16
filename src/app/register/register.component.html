@@ -1,0 +1,35 @@
+<div class="content">
+   <h1>Salon fryzjerski</h1>
+   
+   <form [formGroup]="registerForm" (ngSubmit)="submitHandler()">
+
+      <label for="email">email</label>
+      <input id="email" type="text" formControlName="email"
+      [ngClass]="{invalid: email.invalid && email.touched, valid: email.valid && email.touched}">
+
+      <label for="pass">hasło</label>
+      <input id="pass" type="password" formControlName="pass"
+      [ngClass]="{invalid: pass.invalid && pass.touched, valid: pass.valid && pass.touched}">
+
+      <label for="repass">powtórz hasło</label>
+      <input id="repass" type="password" formControlName="repass"
+      [ngClass]="{invalid: repass.invalid && repass.touched, valid: repass.valid && repass.touched}">
+
+      <label for="fst_name">imię</label>
+      <input id="fst_name" type="text" formControlName="fst_name"
+      [ngClass]="{invalid: fst_name.invalid && fst_name.touched, valid: fst_name.valid && fst_name.touched}">
+
+      <label for="sec_name">nazwisko</label>
+      <input id="sec_name" type="text" formControlName="sec_name"
+      [ngClass]="{invalid: sec_name.invalid && sec_name.touched, valid: sec_name.valid && sec_name.touched}">
+
+      <label for="phone">numer telefonu</label>
+      <input id="phone" type="text" formControlName="phone"
+      [ngClass]="{invalid: phone.invalid && phone.touched, valid: phone.valid && phone.touched}">
+   
+      <div class="btns">
+         <button class="btn" routerLink="/">Wstecz</button>
+         <button class="btn" [disabled]="registerForm.invalid" routerLink="/register">Rejestruj</button>
+      </div>
+   </form>
+ </div>

@@ -1,0 +1,60 @@
+.main {
+  height: 100vh;
+  width: 80vw;
+  background-color: #E5E5E5;
+  margin: 0 auto;
+}
+
+.red-line {
+  background-color: #FF7878;
+  height: 3rem;
+  width: 80vw;
+  position: absolute;
+}
+
+.bot {
+  bottom: 0;
+}
+
+.content {
+  display: grid;
+  justify-content: center;
+}
+
+.content h1 {
+  display: block;
+  margin-top: 5rem;
+  font-size: 3rem;
+  width: 100%;
+  text-align: center;
+}
+
+.text {
+  font-size: 1.75rem;
+  margin: 2rem 2rem;
+}
+
+.btns {
+  display: grid;
+  margin-top: 0rem;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+button { cursor: pointer; }
+button:disabled { cursor: default; }
+
+.btn {
+  justify-self: center;
+  font-size: 1.5rem;
+  border-radius: 0;
+  border: 0;
+  background-color: #FF7878;
+  height: 2.5rem;
+  padding: 1rem;
+  line-height: 0rem;
+  width: fit-content;
+}
+
+.btn:hover {
+  background-color: #BBB;
+}

@@ -1,0 +1,15 @@
+<div class="content">
+   <h1>Historia wizyt</h1>
+   <div class="grey_list">
+      <ul>
+         <li *ngFor="let visit of visitsW">
+            <div class="date">{{visit.Ddate}}</div>
+            <div class="type">{{services[visit.ServiceeId-1].Name}}</div>
+            <div class="price">{{services[visit.ServiceeId-1].Price}} zł</div>
+         </li>
+      </ul>
+   </div>
+   <div class="div_buttons">
+      <button class="btn" routerLink="/userpanel">Wstecz</button>
+   </div>
+</div>
