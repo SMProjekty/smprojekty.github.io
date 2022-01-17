@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class SharedService {
 
-  readonly APIUrl = 'https://fryzjerprojekt.herokuapp.com/';
+  readonly APIUrl = 'https://fryzjerprojekt.herokuapp.com';
 
   constructor(private http:HttpClient) { }
 
