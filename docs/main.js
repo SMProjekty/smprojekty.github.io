@@ -818,7 +818,7 @@ __webpack_require__.r(__webpack_exports__);
 class SharedService {
     constructor(http) {
         this.http = http;
-        this.APIUrl = 'https://fryzjerprojekt.herokuapp.com/';
+        this.APIUrl = 'https://fryzjerprojekt.herokuapp.com';
     }
     getUsers() {
         return this.http.get(this.APIUrl + '/user');
