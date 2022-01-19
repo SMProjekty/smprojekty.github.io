@@ -10,7 +10,7 @@
       <ul>
          <li *ngFor="let visit of visits">
             <div class="date">{{visit.Ddate}}</div>
-            <div class="type">{{services[visit.ServiceeId-1].Name}}</div>
+            <div class="type">{{visit.servicee.Name}}</div>
             <button (click)="delVisit(visit.VisitId)">Anuluj wizytę</button>
          </li>
       </ul>

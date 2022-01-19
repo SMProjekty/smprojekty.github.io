@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 export class SharedService {
 
   readonly APIUrl = 'https://fryzjerprojekt.herokuapp.com';
+  // readonly APIUrl = 'http://127.0.0.1:8000';
 
   constructor(private http:HttpClient) { }
 
@@ -31,6 +32,10 @@ export class SharedService {
     return this.http.get(this.APIUrl + '/visit/' + id)
   }
 
+  getAllVisits() {
+    return this.http.get(this.APIUrl + '/vall')
+  }
+
   getVisitsW(id: number) {
     return this.http.get(this.APIUrl + '/visitW/' + id)
   }
@@ -45,5 +50,9 @@ export class SharedService {
 
   delVisit(id: number) {
     return this.http.delete(this.APIUrl + '/visit/' + id)
+  }
+
+  changeStatus(id: number, x: any) {
+    return this.http.put(this.APIUrl + '/visit/' + id + '/', x)
   }
 }

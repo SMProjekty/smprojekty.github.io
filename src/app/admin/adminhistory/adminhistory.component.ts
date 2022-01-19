@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SharedService } from 'src/app/shared.service';
 
 @Component({
   selector: 'app-adminhistory',
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminhistoryComponent implements OnInit {
 
-  constructor() { }
+  visits: any
+
+  constructor(private service: SharedService) { }
 
   ngOnInit(): void {
+    this.showVisits()
+  }
+
+  showVisits() {
+    this.service.getAllVisits().subscribe(res => this.visits = res)
+  }
+
+  changeStatus(id: number) {
+    this.service.changeStatus(id, {Status: 'W'}).subscribe(res => {
+      console.log(res)
+      this.showVisits()
+    })
   }
 
 }

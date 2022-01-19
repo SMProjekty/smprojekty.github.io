@@ -50,8 +50,8 @@ export class MakeuservisitComponent implements OnInit {
   }
 
   addVisitt() {
-    var y = { UserId: this.currentUser[0].UserId,
-              ServiceeId: this.visitFormA.get('type').value,
+    var y = { userr: this.currentUser[0].UserId,
+              servicee: this.visitFormA.get('type').value,
               Ddate: this.visitFormA.get('date').value,
               Hhour: this.visitFormA.get('hour').value,
               Status: this.visitFormA.get('status').value };

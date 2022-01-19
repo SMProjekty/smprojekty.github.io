@@ -32,8 +32,8 @@ export class MakevisitComponent implements OnInit {
   }
 
   submitHandler() {
-    var x = { UserId: this.userData.UserId,
-              ServiceeId: this.visitForm.get('type').value,
+    var x = { userr: this.userData.UserId,
+              servicee: this.visitForm.get('type').value,
               Ddate: this.visitForm.get('date').value,
               Hhour: this.visitForm.get('hour').value,
               Status: this.visitForm.get('status').value };

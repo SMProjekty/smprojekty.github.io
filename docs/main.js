@@ -217,8 +217,8 @@ class MakevisitComponent {
         });
     }
     submitHandler() {
-        var x = { UserId: this.userData.UserId,
-            ServiceeId: this.visitForm.get('type').value,
+        var x = { userr: this.userData.UserId,
+            servicee: this.visitForm.get('type').value,
             Ddate: this.visitForm.get('date').value,
             Hhour: this.visitForm.get('hour').value,
             Status: this.visitForm.get('status').value };
@@ -526,8 +526,8 @@ class MakeuservisitComponent {
         this.service.getServices().subscribe(res => this.services = res);
     }
     addVisitt() {
-        var y = { UserId: this.currentUser[0].UserId,
-            ServiceeId: this.visitFormA.get('type').value,
+        var y = { userr: this.currentUser[0].UserId,
+            servicee: this.visitFormA.get('type').value,
             Ddate: this.visitFormA.get('date').value,
             Hhour: this.visitFormA.get('hour').value,
             Status: this.visitFormA.get('status').value };
@@ -585,7 +585,7 @@ MakeuservisitComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵd
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("formGroup", ctx.visitFormA);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](14);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngForOf", ctx.services);
-    } }, directives: [_angular_forms__WEBPACK_IMPORTED_MODULE_0__["ɵangular_packages_forms_forms_ba"], _angular_forms__WEBPACK_IMPORTED_MODULE_0__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_0__["FormGroupDirective"], _angular_forms__WEBPACK_IMPORTED_MODULE_0__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_0__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_0__["FormControlName"], _angular_common__WEBPACK_IMPORTED_MODULE_5__["NgForOf"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterLink"], _angular_forms__WEBPACK_IMPORTED_MODULE_0__["RadioControlValueAccessor"]], styles: [".content[_ngcontent-%COMP%] {\r\n   display: grid\r\n}\r\n\r\n.content[_ngcontent-%COMP%]   h1[_ngcontent-%COMP%] {\r\n   margin-top: 5rem;\r\n   font-size: 3rem;\r\n   margin-left: 5rem;\r\n}\r\n\r\n.div_buttons[_ngcontent-%COMP%] {\r\n   display: grid;\r\n   margin-top: 2rem;\r\n   grid-template-columns: repeat(2, 1fr);\r\n}\r\n\r\nbutton[_ngcontent-%COMP%] { cursor: pointer; }\r\n\r\n.btn[_ngcontent-%COMP%] {\r\n   justify-self: center;\r\n   font-size: 1.5rem;\r\n   border-radius: 0;\r\n   border: 0;\r\n   background-color: #FF7878;\r\n   height: 2.5rem;\r\n   padding: 1rem;\r\n   line-height: 0rem;\r\n   width: -moz-fit-content;\r\n   width: fit-content;\r\n}\r\n\r\n.btn[_ngcontent-%COMP%]:hover {\r\n   background-color: #BBB;\r\n}\r\n\r\n.grey_list[_ngcontent-%COMP%] {\r\n   background-color: #888;\r\n   font-size: 2em;\r\n   height: 50vh;\r\n   margin: 1rem 2rem;\r\n   text-align: center;\r\n}\r\n\r\n.lighter[_ngcontent-%COMP%] {\r\n   background-color: #BBB;\r\n   height: 37vh;\r\n   border-radius: 1.5rem;\r\n   margin: 0.5rem;\r\n   text-align: left;\r\n   font-size: 1.4rem;\r\n}\r\n\r\nli[_ngcontent-%COMP%] {\r\n   display: grid;\r\n   grid-template-columns: repeat(3, 1fr);\r\n   font-size: 2rem;\r\n}\r\n\r\n.grey_list[_ngcontent-%COMP%]   input[_ngcontent-%COMP%] {\r\n   width: 7rem;\r\n   margin: 1.5rem 3rem 1.5rem 0;\r\n}\r\n\r\n.lighter[_ngcontent-%COMP%]   input[_ngcontent-%COMP%] {\r\n   margin: 0;\r\n}\r\n\r\nlabel[_ngcontent-%COMP%] {\r\n   margin: 0.5rem;\r\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1ha2V1c2VydmlzaXQuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtHQUNHO0FBQ0g7O0FBRUE7R0FDRyxnQkFBZ0I7R0FDaEIsZUFBZTtHQUNmLGlCQUFpQjtBQUNwQjs7QUFFQTtHQUNHLGFBQWE7R0FDYixnQkFBZ0I7R0FDaEIscUNBQXFDO0FBQ3hDOztBQUVBLFNBQVMsZUFBZSxFQUFFOztBQUUxQjtHQUNHLG9CQUFvQjtHQUNwQixpQkFBaUI7R0FDakIsZ0JBQWdCO0dBQ2hCLFNBQVM7R0FDVCx5QkFBeUI7R0FDekIsY0FBYztHQUNkLGFBQWE7R0FDYixpQkFBaUI7R0FDakIsdUJBQWtCO0dBQWxCLGtCQUFrQjtBQUNyQjs7QUFFQTtHQUNHLHNCQUFzQjtBQUN6Qjs7QUFFQTtHQUNHLHNCQUFzQjtHQUN0QixjQUFjO0dBQ2QsWUFBWTtHQUNaLGlCQUFpQjtHQUNqQixrQkFBa0I7QUFDckI7O0FBRUE7R0FDRyxzQkFBc0I7R0FDdEIsWUFBWTtHQUNaLHFCQUFxQjtHQUNyQixjQUFjO0dBQ2QsZ0JBQWdCO0dBQ2hCLGlCQUFpQjtBQUNwQjs7QUFFQTtHQUNHLGFBQWE7R0FDYixxQ0FBcUM7R0FDckMsZUFBZTtBQUNsQjs7QUFFQTtHQUNHLFdBQVc7R0FDWCw0QkFBNEI7QUFDL0I7O0FBRUE7R0FDRyxTQUFTO0FBQ1o7O0FBRUE7R0FDRyxjQUFjO0FBQ2pCIiwiZmlsZSI6Im1ha2V1c2VydmlzaXQuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5jb250ZW50IHtcclxuICAgZGlzcGxheTogZ3JpZFxyXG59XHJcblxyXG4uY29udGVudCBoMSB7XHJcbiAgIG1hcmdpbi10b3A6IDVyZW07XHJcbiAgIGZvbnQtc2l6ZTogM3JlbTtcclxuICAgbWFyZ2luLWxlZnQ6IDVyZW07XHJcbn1cclxuXHJcbi5kaXZfYnV0dG9ucyB7XHJcbiAgIGRpc3BsYXk6IGdyaWQ7XHJcbiAgIG1hcmdpbi10b3A6IDJyZW07XHJcbiAgIGdyaWQtdGVtcGxhdGUtY29sdW1uczogcmVwZWF0KDIsIDFmcik7XHJcbn1cclxuXHJcbmJ1dHRvbiB7IGN1cnNvcjogcG9pbnRlcjsgfVxyXG4gXHJcbi5idG4ge1xyXG4gICBqdXN0aWZ5LXNlbGY6IGNlbnRlcjtcclxuICAgZm9udC1zaXplOiAxLjVyZW07XHJcbiAgIGJvcmRlci1yYWRpdXM6IDA7XHJcbiAgIGJvcmRlcjogMDtcclxuICAgYmFja2dyb3VuZC1jb2xvcjogI0ZGNzg3ODtcclxuICAgaGVpZ2h0OiAyLjVyZW07XHJcbiAgIHBhZGRpbmc6IDFyZW07XHJcbiAgIGxpbmUtaGVpZ2h0OiAwcmVtO1xyXG4gICB3aWR0aDogZml0LWNvbnRlbnQ7XHJcbn1cclxuIFxyXG4uYnRuOmhvdmVyIHtcclxuICAgYmFja2dyb3VuZC1jb2xvcjogI0JCQjtcclxufVxyXG5cclxuLmdyZXlfbGlzdCB7XHJcbiAgIGJhY2tncm91bmQtY29sb3I6ICM4ODg7XHJcbiAgIGZvbnQtc2l6ZTogMmVtO1xyXG4gICBoZWlnaHQ6IDUwdmg7XHJcbiAgIG1hcmdpbjogMXJlbSAycmVtO1xyXG4gICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbn1cclxuXHJcbi5saWdodGVyIHtcclxuICAgYmFja2dyb3VuZC1jb2xvcjogI0JCQjtcclxuICAgaGVpZ2h0OiAzN3ZoO1xyXG4gICBib3JkZXItcmFkaXVzOiAxLjVyZW07XHJcbiAgIG1hcmdpbjogMC41cmVtO1xyXG4gICB0ZXh0LWFsaWduOiBsZWZ0O1xyXG4gICBmb250LXNpemU6IDEuNHJlbTtcclxufVxyXG5cclxubGkge1xyXG4gICBkaXNwbGF5OiBncmlkO1xyXG4gICBncmlkLXRlbXBsYXRlLWNvbHVtbnM6IHJlcGVhdCgzLCAxZnIpO1xyXG4gICBmb250LXNpemU6IDJyZW07XHJcbn1cclxuXHJcbi5ncmV5X2xpc3QgaW5wdXQge1xyXG4gICB3aWR0aDogN3JlbTtcclxuICAgbWFyZ2luOiAxLjVyZW0gM3JlbSAxLjVyZW0gMDtcclxufVxyXG5cclxuLmxpZ2h0ZXIgaW5wdXQge1xyXG4gICBtYXJnaW46IDA7XHJcbn1cclxuXHJcbmxhYmVsIHtcclxuICAgbWFyZ2luOiAwLjVyZW07XHJcbn0iXX0= */"] });
+    } }, directives: [_angular_forms__WEBPACK_IMPORTED_MODULE_0__["ɵangular_packages_forms_forms_ba"], _angular_forms__WEBPACK_IMPORTED_MODULE_0__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_0__["FormGroupDirective"], _angular_forms__WEBPACK_IMPORTED_MODULE_0__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_0__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_0__["FormControlName"], _angular_common__WEBPACK_IMPORTED_MODULE_5__["NgForOf"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterLink"], _angular_forms__WEBPACK_IMPORTED_MODULE_0__["RadioControlValueAccessor"]], styles: [".content[_ngcontent-%COMP%] {\r\n   display: grid\r\n}\r\n\r\n.content[_ngcontent-%COMP%]   h1[_ngcontent-%COMP%] {\r\n   margin-top: 5rem;\r\n   font-size: 3rem;\r\n   margin-left: 5rem;\r\n}\r\n\r\n.div_buttons[_ngcontent-%COMP%] {\r\n   display: grid;\r\n   margin-top: 2rem;\r\n   grid-template-columns: repeat(2, 1fr);\r\n}\r\n\r\nbutton[_ngcontent-%COMP%] { cursor: pointer; }\r\n\r\n.btn[_ngcontent-%COMP%] {\r\n   justify-self: center;\r\n   font-size: 1.5rem;\r\n   border-radius: 0;\r\n   border: 0;\r\n   background-color: #FF7878;\r\n   height: 2.5rem;\r\n   padding: 1rem;\r\n   line-height: 0rem;\r\n   width: -moz-fit-content;\r\n   width: fit-content;\r\n}\r\n\r\n.btn[_ngcontent-%COMP%]:hover {\r\n   background-color: #BBB;\r\n}\r\n\r\n.grey_list[_ngcontent-%COMP%] {\r\n   background-color: #888;\r\n   font-size: 2em;\r\n   height: 50vh;\r\n   margin: 1rem 2rem;\r\n   text-align: center;\r\n}\r\n\r\n.lighter[_ngcontent-%COMP%] {\r\n   background-color: #BBB;\r\n   height: 27vh;\r\n   border-radius: 1.5rem;\r\n   margin: 0.5rem;\r\n   text-align: left;\r\n   font-size: 1.4rem;\r\n}\r\n\r\nli[_ngcontent-%COMP%] {\r\n   display: grid;\r\n   grid-template-columns: repeat(3, 1fr);\r\n   font-size: 2rem;\r\n}\r\n\r\n.grey_list[_ngcontent-%COMP%]   input[_ngcontent-%COMP%] {\r\n   width: 7rem;\r\n   margin: 1.5rem 3rem 1.5rem 0;\r\n}\r\n\r\n.lighter[_ngcontent-%COMP%]   input[_ngcontent-%COMP%] {\r\n   margin: 0;\r\n}\r\n\r\nlabel[_ngcontent-%COMP%] {\r\n   margin: 0.5rem;\r\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1ha2V1c2VydmlzaXQuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtHQUNHO0FBQ0g7O0FBRUE7R0FDRyxnQkFBZ0I7R0FDaEIsZUFBZTtHQUNmLGlCQUFpQjtBQUNwQjs7QUFFQTtHQUNHLGFBQWE7R0FDYixnQkFBZ0I7R0FDaEIscUNBQXFDO0FBQ3hDOztBQUVBLFNBQVMsZUFBZSxFQUFFOztBQUUxQjtHQUNHLG9CQUFvQjtHQUNwQixpQkFBaUI7R0FDakIsZ0JBQWdCO0dBQ2hCLFNBQVM7R0FDVCx5QkFBeUI7R0FDekIsY0FBYztHQUNkLGFBQWE7R0FDYixpQkFBaUI7R0FDakIsdUJBQWtCO0dBQWxCLGtCQUFrQjtBQUNyQjs7QUFFQTtHQUNHLHNCQUFzQjtBQUN6Qjs7QUFFQTtHQUNHLHNCQUFzQjtHQUN0QixjQUFjO0dBQ2QsWUFBWTtHQUNaLGlCQUFpQjtHQUNqQixrQkFBa0I7QUFDckI7O0FBRUE7R0FDRyxzQkFBc0I7R0FDdEIsWUFBWTtHQUNaLHFCQUFxQjtHQUNyQixjQUFjO0dBQ2QsZ0JBQWdCO0dBQ2hCLGlCQUFpQjtBQUNwQjs7QUFFQTtHQUNHLGFBQWE7R0FDYixxQ0FBcUM7R0FDckMsZUFBZTtBQUNsQjs7QUFFQTtHQUNHLFdBQVc7R0FDWCw0QkFBNEI7QUFDL0I7O0FBRUE7R0FDRyxTQUFTO0FBQ1o7O0FBRUE7R0FDRyxjQUFjO0FBQ2pCIiwiZmlsZSI6Im1ha2V1c2VydmlzaXQuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5jb250ZW50IHtcclxuICAgZGlzcGxheTogZ3JpZFxyXG59XHJcblxyXG4uY29udGVudCBoMSB7XHJcbiAgIG1hcmdpbi10b3A6IDVyZW07XHJcbiAgIGZvbnQtc2l6ZTogM3JlbTtcclxuICAgbWFyZ2luLWxlZnQ6IDVyZW07XHJcbn1cclxuXHJcbi5kaXZfYnV0dG9ucyB7XHJcbiAgIGRpc3BsYXk6IGdyaWQ7XHJcbiAgIG1hcmdpbi10b3A6IDJyZW07XHJcbiAgIGdyaWQtdGVtcGxhdGUtY29sdW1uczogcmVwZWF0KDIsIDFmcik7XHJcbn1cclxuXHJcbmJ1dHRvbiB7IGN1cnNvcjogcG9pbnRlcjsgfVxyXG4gXHJcbi5idG4ge1xyXG4gICBqdXN0aWZ5LXNlbGY6IGNlbnRlcjtcclxuICAgZm9udC1zaXplOiAxLjVyZW07XHJcbiAgIGJvcmRlci1yYWRpdXM6IDA7XHJcbiAgIGJvcmRlcjogMDtcclxuICAgYmFja2dyb3VuZC1jb2xvcjogI0ZGNzg3ODtcclxuICAgaGVpZ2h0OiAyLjVyZW07XHJcbiAgIHBhZGRpbmc6IDFyZW07XHJcbiAgIGxpbmUtaGVpZ2h0OiAwcmVtO1xyXG4gICB3aWR0aDogZml0LWNvbnRlbnQ7XHJcbn1cclxuIFxyXG4uYnRuOmhvdmVyIHtcclxuICAgYmFja2dyb3VuZC1jb2xvcjogI0JCQjtcclxufVxyXG5cclxuLmdyZXlfbGlzdCB7XHJcbiAgIGJhY2tncm91bmQtY29sb3I6ICM4ODg7XHJcbiAgIGZvbnQtc2l6ZTogMmVtO1xyXG4gICBoZWlnaHQ6IDUwdmg7XHJcbiAgIG1hcmdpbjogMXJlbSAycmVtO1xyXG4gICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbn1cclxuXHJcbi5saWdodGVyIHtcclxuICAgYmFja2dyb3VuZC1jb2xvcjogI0JCQjtcclxuICAgaGVpZ2h0OiAyN3ZoO1xyXG4gICBib3JkZXItcmFkaXVzOiAxLjVyZW07XHJcbiAgIG1hcmdpbjogMC41cmVtO1xyXG4gICB0ZXh0LWFsaWduOiBsZWZ0O1xyXG4gICBmb250LXNpemU6IDEuNHJlbTtcclxufVxyXG5cclxubGkge1xyXG4gICBkaXNwbGF5OiBncmlkO1xyXG4gICBncmlkLXRlbXBsYXRlLWNvbHVtbnM6IHJlcGVhdCgzLCAxZnIpO1xyXG4gICBmb250LXNpemU6IDJyZW07XHJcbn1cclxuXHJcbi5ncmV5X2xpc3QgaW5wdXQge1xyXG4gICB3aWR0aDogN3JlbTtcclxuICAgbWFyZ2luOiAxLjVyZW0gM3JlbSAxLjVyZW0gMDtcclxufVxyXG5cclxuLmxpZ2h0ZXIgaW5wdXQge1xyXG4gICBtYXJnaW46IDA7XHJcbn1cclxuXHJcbmxhYmVsIHtcclxuICAgbWFyZ2luOiAwLjVyZW07XHJcbn0iXX0= */"] });
 
 
 /***/ }),
@@ -601,14 +601,87 @@ MakeuservisitComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵd
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AdminhistoryComponent", function() { return AdminhistoryComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var src_app_shared_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/app/shared.service */ "r2F1");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "ofXK");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "tyNb");
 
+
+
+
+function AdminhistoryComponent_li_5_Template(rf, ctx) { if (rf & 1) {
+    const _r3 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "li");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "div", 5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "div", 5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "div", 5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](10);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "button", 6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function AdminhistoryComponent_li_5_Template_button_click_11_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r3); const visit_r1 = ctx.$implicit; const ctx_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r2.changeStatus(visit_r1.VisitId); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](12, "Wykonana");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const visit_r1 = ctx.$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](visit_r1.userr.Name);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](visit_r1.userr.LastName);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](visit_r1.Ddate);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](visit_r1.servicee.Name);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("", visit_r1.servicee.Price, " z\u0142");
+} }
 class AdminhistoryComponent {
-    constructor() { }
+    constructor(service) {
+        this.service = service;
+    }
     ngOnInit() {
+        this.showVisits();
+    }
+    showVisits() {
+        this.service.getAllVisits().subscribe(res => this.visits = res);
+    }
+    changeStatus(id) {
+        this.service.changeStatus(id, { Status: 'W' }).subscribe(res => {
+            console.log(res);
+            this.showVisits();
+        });
     }
 }
-AdminhistoryComponent.ɵfac = function AdminhistoryComponent_Factory(t) { return new (t || AdminhistoryComponent)(); };
-AdminhistoryComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AdminhistoryComponent, selectors: [["app-adminhistory"]], decls: 0, vars: 0, template: function AdminhistoryComponent_Template(rf, ctx) { }, styles: [".content[_ngcontent-%COMP%] {\r\n   display: grid\r\n}\r\n\r\n.content[_ngcontent-%COMP%]   h1[_ngcontent-%COMP%] {\r\n   margin-top: 5rem;\r\n   font-size: 3rem;\r\n   margin-left: 5rem;\r\n}\r\n\r\n.div_buttons[_ngcontent-%COMP%] {\r\n   display: grid;\r\n   margin-top: 2rem;\r\n   grid-template-columns: repeat(3, 1fr);\r\n}\r\n\r\nbutton[_ngcontent-%COMP%] { cursor: pointer; }\r\n\r\n.btn[_ngcontent-%COMP%] {\r\n   justify-self: center;\r\n   font-size: 1.5rem;\r\n   border-radius: 0;\r\n   border: 0;\r\n   background-color: #FF7878;\r\n   height: 2.5rem;\r\n   padding: 1rem;\r\n   line-height: 0rem;\r\n   width: -moz-fit-content;\r\n   width: fit-content;\r\n}\r\n\r\n.btn[_ngcontent-%COMP%]:hover {\r\n   background-color: #BBB;\r\n}\r\n\r\n.grey_list[_ngcontent-%COMP%] {\r\n   background-color: #888;\r\n   font-size: 2em;\r\n   text-align: center;\r\n   height: 50vh;\r\n   margin: 1rem 2rem;\r\n}\r\n\r\nul[_ngcontent-%COMP%] {\r\n   background-color: #BBB;\r\n   height: 37vh;\r\n   border-radius: 1.5rem;\r\n   margin: 0.5rem;\r\n}\r\n\r\nli[_ngcontent-%COMP%] {\r\n   display: grid;\r\n   grid-template-columns: repeat(3, 1fr);\r\n   font-size: 2rem;\r\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFkbWluaGlzdG9yeS5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0dBQ0c7QUFDSDs7QUFFQTtHQUNHLGdCQUFnQjtHQUNoQixlQUFlO0dBQ2YsaUJBQWlCO0FBQ3BCOztBQUVBO0dBQ0csYUFBYTtHQUNiLGdCQUFnQjtHQUNoQixxQ0FBcUM7QUFDeEM7O0FBRUEsU0FBUyxlQUFlLEVBQUU7O0FBRTFCO0dBQ0csb0JBQW9CO0dBQ3BCLGlCQUFpQjtHQUNqQixnQkFBZ0I7R0FDaEIsU0FBUztHQUNULHlCQUF5QjtHQUN6QixjQUFjO0dBQ2QsYUFBYTtHQUNiLGlCQUFpQjtHQUNqQix1QkFBa0I7R0FBbEIsa0JBQWtCO0FBQ3JCOztBQUVBO0dBQ0csc0JBQXNCO0FBQ3pCOztBQUVBO0dBQ0csc0JBQXNCO0dBQ3RCLGNBQWM7R0FDZCxrQkFBa0I7R0FDbEIsWUFBWTtHQUNaLGlCQUFpQjtBQUNwQjs7QUFFQTtHQUNHLHNCQUFzQjtHQUN0QixZQUFZO0dBQ1oscUJBQXFCO0dBQ3JCLGNBQWM7QUFDakI7O0FBRUE7R0FDRyxhQUFhO0dBQ2IscUNBQXFDO0dBQ3JDLGVBQWU7QUFDbEIiLCJmaWxlIjoiYWRtaW5oaXN0b3J5LmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuY29udGVudCB7XHJcbiAgIGRpc3BsYXk6IGdyaWRcclxufVxyXG5cclxuLmNvbnRlbnQgaDEge1xyXG4gICBtYXJnaW4tdG9wOiA1cmVtO1xyXG4gICBmb250LXNpemU6IDNyZW07XHJcbiAgIG1hcmdpbi1sZWZ0OiA1cmVtO1xyXG59XHJcblxyXG4uZGl2X2J1dHRvbnMge1xyXG4gICBkaXNwbGF5OiBncmlkO1xyXG4gICBtYXJnaW4tdG9wOiAycmVtO1xyXG4gICBncmlkLXRlbXBsYXRlLWNvbHVtbnM6IHJlcGVhdCgzLCAxZnIpO1xyXG59XHJcblxyXG5idXR0b24geyBjdXJzb3I6IHBvaW50ZXI7IH1cclxuIFxyXG4uYnRuIHtcclxuICAganVzdGlmeS1zZWxmOiBjZW50ZXI7XHJcbiAgIGZvbnQtc2l6ZTogMS41cmVtO1xyXG4gICBib3JkZXItcmFkaXVzOiAwO1xyXG4gICBib3JkZXI6IDA7XHJcbiAgIGJhY2tncm91bmQtY29sb3I6ICNGRjc4Nzg7XHJcbiAgIGhlaWdodDogMi41cmVtO1xyXG4gICBwYWRkaW5nOiAxcmVtO1xyXG4gICBsaW5lLWhlaWdodDogMHJlbTtcclxuICAgd2lkdGg6IGZpdC1jb250ZW50O1xyXG59XHJcbiBcclxuLmJ0bjpob3ZlciB7XHJcbiAgIGJhY2tncm91bmQtY29sb3I6ICNCQkI7XHJcbn1cclxuXHJcbi5ncmV5X2xpc3Qge1xyXG4gICBiYWNrZ3JvdW5kLWNvbG9yOiAjODg4O1xyXG4gICBmb250LXNpemU6IDJlbTtcclxuICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gICBoZWlnaHQ6IDUwdmg7XHJcbiAgIG1hcmdpbjogMXJlbSAycmVtO1xyXG59XHJcblxyXG51bCB7XHJcbiAgIGJhY2tncm91bmQtY29sb3I6ICNCQkI7XHJcbiAgIGhlaWdodDogMzd2aDtcclxuICAgYm9yZGVyLXJhZGl1czogMS41cmVtO1xyXG4gICBtYXJnaW46IDAuNXJlbTtcclxufVxyXG5cclxubGkge1xyXG4gICBkaXNwbGF5OiBncmlkO1xyXG4gICBncmlkLXRlbXBsYXRlLWNvbHVtbnM6IHJlcGVhdCgzLCAxZnIpO1xyXG4gICBmb250LXNpemU6IDJyZW07XHJcbn0iXX0= */"] });
+AdminhistoryComponent.ɵfac = function AdminhistoryComponent_Factory(t) { return new (t || AdminhistoryComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_shared_service__WEBPACK_IMPORTED_MODULE_1__["SharedService"])); };
+AdminhistoryComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AdminhistoryComponent, selectors: [["app-adminhistory"]], decls: 9, vars: 1, consts: [[1, "content"], [1, "grey_list"], [4, "ngFor", "ngForOf"], [1, "div_buttons"], ["routerLink", "/adminpanel", 1, "btn"], [1, "text"], [3, "click"]], template: function AdminhistoryComponent_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "h1");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "Zaznacz wykonanie wizyty");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "ul");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](5, AdminhistoryComponent_li_5_Template, 13, 5, "li", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "div", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "button", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](8, "Wstecz");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    } if (rf & 2) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.visits);
+    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["NgForOf"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterLink"]], styles: [".content[_ngcontent-%COMP%] {\r\n   display: grid\r\n}\r\n\r\n.content[_ngcontent-%COMP%]   h1[_ngcontent-%COMP%] {\r\n   margin-top: 5rem;\r\n   font-size: 3rem;\r\n   margin-left: 5rem;\r\n}\r\n\r\n.div_buttons[_ngcontent-%COMP%] {\r\n   display: grid;\r\n   margin-top: 2rem;\r\n   grid-template-columns: repeat(3, 1fr);\r\n}\r\n\r\nbutton[_ngcontent-%COMP%] { cursor: pointer; }\r\n\r\n.text[_ngcontent-%COMP%] {\r\n   font-size: 1.3rem;\r\n}\r\n\r\n.btn[_ngcontent-%COMP%] {\r\n   justify-self: center;\r\n   font-size: 1.5rem;\r\n   border-radius: 0;\r\n   border: 0;\r\n   background-color: #FF7878;\r\n   height: 2.5rem;\r\n   padding: 1rem;\r\n   line-height: 0rem;\r\n   width: -moz-fit-content;\r\n   width: fit-content;\r\n}\r\n\r\n.btn[_ngcontent-%COMP%]:hover {\r\n   background-color: #BBB;\r\n}\r\n\r\n.grey_list[_ngcontent-%COMP%] {\r\n   background-color: #888;\r\n   font-size: 2em;\r\n   text-align: center;\r\n   height: 50vh;\r\n   margin: 1rem 2rem;\r\n}\r\n\r\nul[_ngcontent-%COMP%] {\r\n   background-color: #BBB;\r\n   height: 37vh;\r\n   border-radius: 1.5rem;\r\n   margin: 0.5rem;\r\n}\r\n\r\nli[_ngcontent-%COMP%] {\r\n   display: grid;\r\n   grid-template-columns: repeat(6, 1fr);\r\n   font-size: 2rem;\r\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFkbWluaGlzdG9yeS5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0dBQ0c7QUFDSDs7QUFFQTtHQUNHLGdCQUFnQjtHQUNoQixlQUFlO0dBQ2YsaUJBQWlCO0FBQ3BCOztBQUVBO0dBQ0csYUFBYTtHQUNiLGdCQUFnQjtHQUNoQixxQ0FBcUM7QUFDeEM7O0FBRUEsU0FBUyxlQUFlLEVBQUU7O0FBRTFCO0dBQ0csaUJBQWlCO0FBQ3BCOztBQUVBO0dBQ0csb0JBQW9CO0dBQ3BCLGlCQUFpQjtHQUNqQixnQkFBZ0I7R0FDaEIsU0FBUztHQUNULHlCQUF5QjtHQUN6QixjQUFjO0dBQ2QsYUFBYTtHQUNiLGlCQUFpQjtHQUNqQix1QkFBa0I7R0FBbEIsa0JBQWtCO0FBQ3JCOztBQUVBO0dBQ0csc0JBQXNCO0FBQ3pCOztBQUVBO0dBQ0csc0JBQXNCO0dBQ3RCLGNBQWM7R0FDZCxrQkFBa0I7R0FDbEIsWUFBWTtHQUNaLGlCQUFpQjtBQUNwQjs7QUFFQTtHQUNHLHNCQUFzQjtHQUN0QixZQUFZO0dBQ1oscUJBQXFCO0dBQ3JCLGNBQWM7QUFDakI7O0FBRUE7R0FDRyxhQUFhO0dBQ2IscUNBQXFDO0dBQ3JDLGVBQWU7QUFDbEIiLCJmaWxlIjoiYWRtaW5oaXN0b3J5LmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuY29udGVudCB7XHJcbiAgIGRpc3BsYXk6IGdyaWRcclxufVxyXG5cclxuLmNvbnRlbnQgaDEge1xyXG4gICBtYXJnaW4tdG9wOiA1cmVtO1xyXG4gICBmb250LXNpemU6IDNyZW07XHJcbiAgIG1hcmdpbi1sZWZ0OiA1cmVtO1xyXG59XHJcblxyXG4uZGl2X2J1dHRvbnMge1xyXG4gICBkaXNwbGF5OiBncmlkO1xyXG4gICBtYXJnaW4tdG9wOiAycmVtO1xyXG4gICBncmlkLXRlbXBsYXRlLWNvbHVtbnM6IHJlcGVhdCgzLCAxZnIpO1xyXG59XHJcblxyXG5idXR0b24geyBjdXJzb3I6IHBvaW50ZXI7IH1cclxuXHJcbi50ZXh0IHtcclxuICAgZm9udC1zaXplOiAxLjNyZW07XHJcbn1cclxuIFxyXG4uYnRuIHtcclxuICAganVzdGlmeS1zZWxmOiBjZW50ZXI7XHJcbiAgIGZvbnQtc2l6ZTogMS41cmVtO1xyXG4gICBib3JkZXItcmFkaXVzOiAwO1xyXG4gICBib3JkZXI6IDA7XHJcbiAgIGJhY2tncm91bmQtY29sb3I6ICNGRjc4Nzg7XHJcbiAgIGhlaWdodDogMi41cmVtO1xyXG4gICBwYWRkaW5nOiAxcmVtO1xyXG4gICBsaW5lLWhlaWdodDogMHJlbTtcclxuICAgd2lkdGg6IGZpdC1jb250ZW50O1xyXG59XHJcbiBcclxuLmJ0bjpob3ZlciB7XHJcbiAgIGJhY2tncm91bmQtY29sb3I6ICNCQkI7XHJcbn1cclxuXHJcbi5ncmV5X2xpc3Qge1xyXG4gICBiYWNrZ3JvdW5kLWNvbG9yOiAjODg4O1xyXG4gICBmb250LXNpemU6IDJlbTtcclxuICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gICBoZWlnaHQ6IDUwdmg7XHJcbiAgIG1hcmdpbjogMXJlbSAycmVtO1xyXG59XHJcblxyXG51bCB7XHJcbiAgIGJhY2tncm91bmQtY29sb3I6ICNCQkI7XHJcbiAgIGhlaWdodDogMzd2aDtcclxuICAgYm9yZGVyLXJhZGl1czogMS41cmVtO1xyXG4gICBtYXJnaW46IDAuNXJlbTtcclxufVxyXG5cclxubGkge1xyXG4gICBkaXNwbGF5OiBncmlkO1xyXG4gICBncmlkLXRlbXBsYXRlLWNvbHVtbnM6IHJlcGVhdCg2LCAxZnIpO1xyXG4gICBmb250LXNpemU6IDJyZW07XHJcbn0iXX0= */"] });
 
 
 /***/ }),
@@ -647,28 +720,24 @@ function HistoryComponent_li_5_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
     const visit_r1 = ctx.$implicit;
-    const ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](visit_r1.Ddate);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r0.services[visit_r1.ServiceeId - 1].Name);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](visit_r1.servicee.Name);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("", ctx_r0.services[visit_r1.ServiceeId - 1].Price, " z\u0142");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("", visit_r1.servicee.Price, " z\u0142");
 } }
 class HistoryComponent {
     constructor(dataService, service) {
         this.dataService = dataService;
         this.service = service;
-        this.services = this.dataService.servicesData;
         this.userData = this.dataService.sharedData;
     }
     ngOnInit() {
         this.showPastVisits();
     }
     showPastVisits() {
-        this.service.getVisitsW(this.userData.UserId).subscribe(res => {
-            this.visitsW = res;
-        });
+        this.service.getVisitsW(this.userData.UserId).subscribe(res => this.visitsW = res);
     }
 }
 HistoryComponent.ɵfac = function HistoryComponent_Factory(t) { return new (t || HistoryComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_data_service__WEBPACK_IMPORTED_MODULE_1__["DataService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_shared_service__WEBPACK_IMPORTED_MODULE_2__["SharedService"])); };
@@ -732,11 +801,10 @@ function UserpanelComponent_li_14_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
     const visit_r1 = ctx.$implicit;
-    const ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](visit_r1.Ddate);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r0.services[visit_r1.ServiceeId - 1].Name);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](visit_r1.servicee.Name);
 } }
 class UserpanelComponent {
     constructor(dataService, service) {
@@ -745,21 +813,14 @@ class UserpanelComponent {
         this.userData = this.dataService.sharedData;
     }
     ngOnInit() {
-        this.getServices();
         this.refreshVisits();
+        this.getServicee();
     }
     refreshVisits() {
-        this.service.getVisits(this.userData.UserId).subscribe(res => {
-            this.visits = res;
-            console.log(this.visits);
-        });
+        this.service.getVisits(this.userData.UserId).subscribe(res => this.visits = res);
     }
-    getServices() {
-        this.service.getServices().subscribe(res => {
-            this.services = res;
-            this.dataService.servicesData = res;
-            console.log(this.services);
-        });
+    getServicee() {
+        this.service.getServices().subscribe(res => this.dataService.servicesData = res);
     }
     delVisit(visit_id) {
         this.service.delVisit(visit_id).subscribe(res => this.refreshVisits());
@@ -816,6 +877,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 class SharedService {
+    // readonly APIUrl = 'http://127.0.0.1:8000';
     constructor(http) {
         this.http = http;
         this.APIUrl = 'https://fryzjerprojekt.herokuapp.com';
@@ -835,6 +897,9 @@ class SharedService {
     getVisits(id) {
         return this.http.get(this.APIUrl + '/visit/' + id);
     }
+    getAllVisits() {
+        return this.http.get(this.APIUrl + '/vall');
+    }
     getVisitsW(id) {
         return this.http.get(this.APIUrl + '/visitW/' + id);
     }
@@ -846,6 +911,9 @@ class SharedService {
     }
     delVisit(id) {
         return this.http.delete(this.APIUrl + '/visit/' + id);
+    }
+    changeStatus(id, x) {
+        return this.http.put(this.APIUrl + '/visit/' + id + '/', x);
     }
 }
 SharedService.ɵfac = function SharedService_Factory(t) { return new (t || SharedService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"])); };

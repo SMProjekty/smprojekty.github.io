@@ -1,0 +1,18 @@
+<div class="content">
+   <h1>Zaznacz wykonanie wizyty</h1>
+   <div class="grey_list">
+      <ul>
+         <li *ngFor="let visit of visits">
+            <div class="text">{{visit.userr.Name}}</div>
+            <div class="text">{{visit.userr.LastName}}</div>
+            <div class="text">{{visit.Ddate}}</div>
+            <div class="text">{{visit.servicee.Name}}</div>
+            <div class="text">{{visit.servicee.Price}} zł</div>
+            <button (click)="changeStatus(visit.VisitId)">Wykonana</button>
+         </li>
+      </ul>
+   </div>
+   <div class="div_buttons">
+      <button class="btn" routerLink="/adminpanel">Wstecz</button>
+   </div>
+</div>

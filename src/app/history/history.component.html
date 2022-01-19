@@ -4,8 +4,8 @@
       <ul>
          <li *ngFor="let visit of visitsW">
             <div class="date">{{visit.Ddate}}</div>
-            <div class="type">{{services[visit.ServiceeId-1].Name}}</div>
-            <div class="price">{{services[visit.ServiceeId-1].Price}} zł</div>
+            <div class="type">{{visit.servicee.Name}}</div>
+            <div class="price">{{visit.servicee.Price}} zł</div>
          </li>
       </ul>
    </div>

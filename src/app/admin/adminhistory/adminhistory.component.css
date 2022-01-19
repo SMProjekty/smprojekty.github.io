@@ -15,6 +15,10 @@
 }
 
 button { cursor: pointer; }
+
+.text {
+   font-size: 1.3rem;
+}
  
 .btn {
    justify-self: center;
@@ -49,6 +53,6 @@ ul {
 
 li {
    display: grid;
-   grid-template-columns: repeat(3, 1fr);
+   grid-template-columns: repeat(6, 1fr);
    font-size: 2rem;
 }
