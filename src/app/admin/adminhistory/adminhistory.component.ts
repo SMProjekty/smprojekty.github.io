@@ -17,7 +17,7 @@ export class AdminhistoryComponent implements OnInit {
   }
 
   showVisits() {
-    this.service.getAllVisits().subscribe(res => this.visits = res)
+    this.service.visitsall().subscribe(res => this.visits = res)
   }
 
   changeStatus(id: number) {

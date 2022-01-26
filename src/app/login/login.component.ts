@@ -28,11 +28,15 @@ export class LoginComponent implements OnInit {
   }
 
   submitHandler() {
-    const x = { Email: this.loginForm.get('email').value, Pass: this.loginForm.get('pass').value }
-    this.service.loginUser(x).subscribe(res => { 
+    var x = { Email: this.loginForm.get('email').value, Pass: this.loginForm.get('pass').value }
+    this.service.login(x).subscribe(res => { 
         if (res != "Failed to Add") {
-          this.dataService.sharedData = res[0];
-          this.router.navigate(['../userpanel'])
+          var x = { UserId: res[0].UserId }
+          this.service.auth(x).subscribe(res => {
+            this.dataService.sharedData = res[0];
+            console.log(this.dataService.sharedData)
+            this.router.navigate(['../userpanel'])
+          })
         } else {
           console.log('login error')
           this.loginForm.reset()

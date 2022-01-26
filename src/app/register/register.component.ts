@@ -52,13 +52,22 @@ export class RegisterComponent implements OnInit {
 
   submitHandler() {
     var x = { Email: this.registerForm.get('email').value,
-              Pass: this.registerForm.get('pass').value,
-              Name: this.registerForm.get('fst_name').value,
-              LastName: this.registerForm.get('sec_name').value,
-              Phone: this.registerForm.get('phone').value };
-    this.service.addUser(x).subscribe(res => {
-      if (res != 'Failed to Add')
-        this.router.navigate(['../login'])
+              Pass: this.registerForm.get('pass').value }
+      this.service.registerLogin(x).subscribe(res => {
+      var getId = res
+      console.log(getId[0].UserId)
+      console.log(getId)
+      if (res != 'Failed to Add') {
+        var y = { UserId: getId[0].UserId,
+                  Name: this.registerForm.get('fst_name').value,
+                  LastName: this.registerForm.get('sec_name').value,
+                  Phone: this.registerForm.get('phone').value };
+        this.service.register(y).subscribe(res => {
+          if (res != 'Failed to Add')
+          console.log(res)
+          this.router.navigate(['../login'])
+        })
+      }
       else {
         console.log('register error')
         this.registerForm.reset()

@@ -11,48 +11,18 @@ export class SharedService {
   // readonly APIUrl = 'http://127.0.0.1:8000';
 
   constructor(private http:HttpClient) { }
-
-  getUsers(): Observable<any[]> {
-    return this.http.get<any[]>(this.APIUrl + '/user');
-  }
   
-  getUser(x: any) {
-    return this.http.post(this.APIUrl + '/user', x);
-  }
-
-  addUser(x:any) {
-    return this.http.post(this.APIUrl + '/register', x);
-  }
-
-  loginUser(x:any) {
-    return this.http.post(this.APIUrl + '/login', x)
-  }
-
-  getVisits(id: number) {
-    return this.http.get(this.APIUrl + '/visit/' + id)
-  }
-
-  getAllVisits() {
-    return this.http.get(this.APIUrl + '/vall')
-  }
-
-  getVisitsW(id: number) {
-    return this.http.get(this.APIUrl + '/visitW/' + id)
-  }
-
-  addVisit(x:any) {
-    return this.http.post(this.APIUrl + '/visit', x)
-  }
-
-  getServices() {
-    return this.http.get(this.APIUrl + '/servicee')
-  }
-
-  delVisit(id: number) {
-    return this.http.delete(this.APIUrl + '/visit/' + id)
-  }
-
-  changeStatus(id: number, x: any) {
-    return this.http.put(this.APIUrl + '/visit/' + id + '/', x)
-  }
+  registerLogin(x: any) { return this.http.post(this.APIUrl + '/registerlogin', x); }
+  register(y: any)      { return this.http.post(this.APIUrl + '/register', y); }
+  login(x: any)         { return this.http.post(this.APIUrl + '/login', x); }
+  auth(x: any)          { return this.http.post(this.APIUrl + '/auth', x); }
+  visits(x: any)        { return this.http.post(this.APIUrl + '/nextvisit', x); }
+  visitsw(id: number)   { return this.http.get(this.APIUrl + '/visitW/' + id +'/'); }
+  makevisit(x: any)     { return this.http.post(this.APIUrl + '/visit', x); }
+  services()            { return this.http.get(this.APIUrl + '/servicee'); }
+  visitsall()           { return this.http.get(this.APIUrl + '/vall'); }
+  changeStatus(id: number, x: any) { return this.http.put(this.APIUrl + '/visit/' + id + '/', x); }
+  delVisit(id: number)  { return this.http.delete(this.APIUrl + '/visit/' + id); }
+  getUser(x: any)       { return this.http.post(this.APIUrl + '/customerunr', x); }
+  checkdate(x: any)     { return this.http.post(this.APIUrl + '/checkdate', x); }
 }

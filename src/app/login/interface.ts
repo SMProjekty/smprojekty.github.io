@@ -1,5 +1,5 @@
 export interface ILoggedUser {
-   UserId: number,
+   CustomerId: number,
    Name: string,
    LastName: string,
    Phone: string

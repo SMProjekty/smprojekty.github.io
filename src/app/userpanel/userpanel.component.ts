@@ -10,8 +10,9 @@ import { SharedService } from '../shared.service';
 })
 export class UserpanelComponent implements OnInit {
 
-  visits: Object;
+  visits: any;
   userData: ILoggedUser = this.dataService.sharedData;
+  sum: number = 0;
   
   constructor(private dataService: DataService,
               private service: SharedService) { }
@@ -22,11 +23,20 @@ export class UserpanelComponent implements OnInit {
   }
 
   refreshVisits() {
-    this.service.getVisits(this.userData.UserId).subscribe(res => this.visits = res )
+    this.service.visits({ CustomerId: this.userData.CustomerId }).subscribe(res => {
+      this.visits = res 
+      console.log(this.visits)
+      let a = 0
+      this.sum = 0
+      while(this.visits[a].servicee.Price != undefined) {
+        this.sum += this.visits[a].servicee.Price
+        a++
+      }
+    }) 
   }
 
   getServicee() {
-    this.service.getServices().subscribe(res => this.dataService.servicesData = res)
+    this.service.services().subscribe(res => this.dataService.servicesData = res)
   }
 
   delVisit(visit_id) {

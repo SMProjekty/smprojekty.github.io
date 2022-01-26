@@ -72,13 +72,22 @@ class RegisterComponent {
     }
     submitHandler() {
         var x = { Email: this.registerForm.get('email').value,
-            Pass: this.registerForm.get('pass').value,
-            Name: this.registerForm.get('fst_name').value,
-            LastName: this.registerForm.get('sec_name').value,
-            Phone: this.registerForm.get('phone').value };
-        this.service.addUser(x).subscribe(res => {
-            if (res != 'Failed to Add')
-                this.router.navigate(['../login']);
+            Pass: this.registerForm.get('pass').value };
+        this.service.registerLogin(x).subscribe(res => {
+            var getId = res;
+            console.log(getId[0].UserId);
+            console.log(getId);
+            if (res != 'Failed to Add') {
+                var y = { UserId: getId[0].UserId,
+                    Name: this.registerForm.get('fst_name').value,
+                    LastName: this.registerForm.get('sec_name').value,
+                    Phone: this.registerForm.get('phone').value };
+                this.service.register(y).subscribe(res => {
+                    if (res != 'Failed to Add')
+                        console.log(res);
+                    this.router.navigate(['../login']);
+                });
+            }
             else {
                 console.log('register error');
                 this.registerForm.reset();
@@ -216,13 +225,22 @@ class MakevisitComponent {
             status: ['N', [_angular_forms__WEBPACK_IMPORTED_MODULE_0__["Validators"].required]]
         });
     }
+    // dateValidator(date: string){
+    //   this.service.checkdate({Ddate: date}).subscribe(res => {
+    //     if(res != 'Invalid') 
+    //       return console.log(res)
+    //   })
+    // }
     submitHandler() {
-        var x = { userr: this.userData.UserId,
+        var x = { Customerr: this.userData.CustomerId,
             servicee: this.visitForm.get('type').value,
+            Employeee: 1,
+            DiscountId: 1,
             Ddate: this.visitForm.get('date').value,
             Hhour: this.visitForm.get('hour').value,
             Status: this.visitForm.get('status').value };
-        this.service.addVisit(x).subscribe(res => {
+        // this.dateValidator(this.visitForm.get('date').value)
+        this.service.makevisit(x).subscribe(res => {
             if (res != 'Failed to Add')
                 this.router.navigate(['../userpanel']);
             else {
@@ -471,10 +489,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function MakeuservisitComponent_div_18_Template(rf, ctx) { if (rf & 1) {
+function MakeuservisitComponent_div_22_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "label", 12);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](2, "input", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "label", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](2, "input", 14);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
@@ -499,10 +517,11 @@ class MakeuservisitComponent {
         this.services = this.dataService.servicesData;
     }
     ngOnInit() {
-        this.getServices();
+        this.getServicee();
         this.visitFormA = this.fb.group({
             name: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_0__["Validators"].required]],
             lastname: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_0__["Validators"].required]],
+            phone: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_0__["Validators"].required]],
             hour: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_0__["Validators"].required]],
             date: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_0__["Validators"].required]],
             type: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_0__["Validators"].required]],
@@ -511,10 +530,12 @@ class MakeuservisitComponent {
     }
     submitHandler() {
         var x = { Name: this.visitFormA.get('name').value,
-            LastName: this.visitFormA.get('lastname').value };
+            LastName: this.visitFormA.get('lastname').value,
+            Phone: this.visitFormA.get('phone').value };
         this.service.getUser(x).subscribe(res => {
-            if (res != 'Failed Search') {
+            if (res != 'Failed to Add') {
                 this.currentUser = res;
+                console.log(this.currentUser);
                 this.addVisitt();
             }
             else {
@@ -522,16 +543,18 @@ class MakeuservisitComponent {
             }
         });
     }
-    getServices() {
-        this.service.getServices().subscribe(res => this.services = res);
+    getServicee() {
+        this.service.services().subscribe(res => this.dataService.servicesData = res);
     }
     addVisitt() {
-        var y = { userr: this.currentUser[0].UserId,
+        var y = { Customerr: this.currentUser[0].CustomerId,
             servicee: this.visitFormA.get('type').value,
+            Employeee: 1,
+            DiscountId: 1,
             Ddate: this.visitFormA.get('date').value,
             Hhour: this.visitFormA.get('hour').value,
             Status: this.visitFormA.get('status').value };
-        this.service.addVisit(y).subscribe(res2 => {
+        this.service.makevisit(y).subscribe(res2 => {
             console.log(y);
             if (res2 != 'Failed to Add')
                 this.router.navigate(['../adminpanel']);
@@ -542,7 +565,7 @@ class MakeuservisitComponent {
     }
 }
 MakeuservisitComponent.ɵfac = function MakeuservisitComponent_Factory(t) { return new (t || MakeuservisitComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_forms__WEBPACK_IMPORTED_MODULE_0__["FormBuilder"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](src_app_shared_service__WEBPACK_IMPORTED_MODULE_2__["SharedService"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](src_app_data_service__WEBPACK_IMPORTED_MODULE_3__["DataService"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"])); };
-MakeuservisitComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: MakeuservisitComponent, selectors: [["app-makeuservisit"]], decls: 24, vars: 2, consts: [[1, "content"], [1, "grey_list"], [3, "formGroup", "ngSubmit"], ["type", "text", "id", "name", "formControlName", "name"], ["type", "text", "id", "lastname", "formControlName", "lastname"], ["type", "time", "id", "time", "formControlName", "hour"], ["type", "date", "id", "date", "formControlName", "date"], [1, "lighter"], [4, "ngFor", "ngForOf"], [1, "div_buttons"], ["routerLink", "/makeuservisit", 1, "btn"], ["routerLink", "/adminpanel", 1, "btn"], [3, "for"], ["type", "radio", "formControlName", "type", 3, "id", "value"]], template: function MakeuservisitComponent_Template(rf, ctx) { if (rf & 1) {
+MakeuservisitComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: MakeuservisitComponent, selectors: [["app-makeuservisit"]], decls: 28, vars: 2, consts: [[1, "content"], [1, "grey_list"], [3, "formGroup", "ngSubmit"], ["type", "text", "id", "name", "formControlName", "name"], ["type", "text", "id", "lastname", "formControlName", "lastname"], ["type", "text", "id", "phone", "formControlName", "phone"], ["type", "time", "id", "time", "formControlName", "hour"], ["type", "date", "id", "date", "formControlName", "date"], [1, "lighter"], [4, "ngFor", "ngForOf"], [1, "div_buttons"], ["routerLink", "/makeuservisit", 1, "btn"], ["routerLink", "/adminpanel", 1, "btn"], [3, "for"], ["type", "radio", "formControlName", "type", 3, "id", "value"]], template: function MakeuservisitComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "h1");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](2, "Wybierz termin i us\u0142ug\u0119 dla klienta");
@@ -559,22 +582,27 @@ MakeuservisitComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵd
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](10, "input", 4);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](11, "label");
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](12, "Godzina");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](12, "Telefon");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](13, "input", 5);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](14, "label");
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](15, "Data");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](14, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](15, "label");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](16, "Godzina");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](16, "input", 6);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](17, "div", 7);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](18, MakeuservisitComponent_div_18_Template, 4, 5, "div", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](17, "input", 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](18, "label");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](19, "Data");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](19, "div", 9);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](20, "button", 10);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](21, "Um\u00F3w wizyt\u0119");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](20, "input", 7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](21, "div", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](22, MakeuservisitComponent_div_22_Template, 4, 5, "div", 9);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](22, "button", 11);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](23, "Wstecz");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](23, "div", 10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](24, "button", 11);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](25, "Um\u00F3w wizyt\u0119");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](26, "button", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](27, "Wstecz");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
@@ -583,9 +611,9 @@ MakeuservisitComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵd
     } if (rf & 2) {
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](4);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("formGroup", ctx.visitFormA);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](14);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](18);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngForOf", ctx.services);
-    } }, directives: [_angular_forms__WEBPACK_IMPORTED_MODULE_0__["ɵangular_packages_forms_forms_ba"], _angular_forms__WEBPACK_IMPORTED_MODULE_0__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_0__["FormGroupDirective"], _angular_forms__WEBPACK_IMPORTED_MODULE_0__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_0__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_0__["FormControlName"], _angular_common__WEBPACK_IMPORTED_MODULE_5__["NgForOf"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterLink"], _angular_forms__WEBPACK_IMPORTED_MODULE_0__["RadioControlValueAccessor"]], styles: [".content[_ngcontent-%COMP%] {\r\n   display: grid\r\n}\r\n\r\n.content[_ngcontent-%COMP%]   h1[_ngcontent-%COMP%] {\r\n   margin-top: 5rem;\r\n   font-size: 3rem;\r\n   margin-left: 5rem;\r\n}\r\n\r\n.div_buttons[_ngcontent-%COMP%] {\r\n   display: grid;\r\n   margin-top: 2rem;\r\n   grid-template-columns: repeat(2, 1fr);\r\n}\r\n\r\nbutton[_ngcontent-%COMP%] { cursor: pointer; }\r\n\r\n.btn[_ngcontent-%COMP%] {\r\n   justify-self: center;\r\n   font-size: 1.5rem;\r\n   border-radius: 0;\r\n   border: 0;\r\n   background-color: #FF7878;\r\n   height: 2.5rem;\r\n   padding: 1rem;\r\n   line-height: 0rem;\r\n   width: -moz-fit-content;\r\n   width: fit-content;\r\n}\r\n\r\n.btn[_ngcontent-%COMP%]:hover {\r\n   background-color: #BBB;\r\n}\r\n\r\n.grey_list[_ngcontent-%COMP%] {\r\n   background-color: #888;\r\n   font-size: 2em;\r\n   height: 50vh;\r\n   margin: 1rem 2rem;\r\n   text-align: center;\r\n}\r\n\r\n.lighter[_ngcontent-%COMP%] {\r\n   background-color: #BBB;\r\n   height: 27vh;\r\n   border-radius: 1.5rem;\r\n   margin: 0.5rem;\r\n   text-align: left;\r\n   font-size: 1.4rem;\r\n}\r\n\r\nli[_ngcontent-%COMP%] {\r\n   display: grid;\r\n   grid-template-columns: repeat(3, 1fr);\r\n   font-size: 2rem;\r\n}\r\n\r\n.grey_list[_ngcontent-%COMP%]   input[_ngcontent-%COMP%] {\r\n   width: 7rem;\r\n   margin: 1.5rem 3rem 1.5rem 0;\r\n}\r\n\r\n.lighter[_ngcontent-%COMP%]   input[_ngcontent-%COMP%] {\r\n   margin: 0;\r\n}\r\n\r\nlabel[_ngcontent-%COMP%] {\r\n   margin: 0.5rem;\r\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1ha2V1c2VydmlzaXQuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtHQUNHO0FBQ0g7O0FBRUE7R0FDRyxnQkFBZ0I7R0FDaEIsZUFBZTtHQUNmLGlCQUFpQjtBQUNwQjs7QUFFQTtHQUNHLGFBQWE7R0FDYixnQkFBZ0I7R0FDaEIscUNBQXFDO0FBQ3hDOztBQUVBLFNBQVMsZUFBZSxFQUFFOztBQUUxQjtHQUNHLG9CQUFvQjtHQUNwQixpQkFBaUI7R0FDakIsZ0JBQWdCO0dBQ2hCLFNBQVM7R0FDVCx5QkFBeUI7R0FDekIsY0FBYztHQUNkLGFBQWE7R0FDYixpQkFBaUI7R0FDakIsdUJBQWtCO0dBQWxCLGtCQUFrQjtBQUNyQjs7QUFFQTtHQUNHLHNCQUFzQjtBQUN6Qjs7QUFFQTtHQUNHLHNCQUFzQjtHQUN0QixjQUFjO0dBQ2QsWUFBWTtHQUNaLGlCQUFpQjtHQUNqQixrQkFBa0I7QUFDckI7O0FBRUE7R0FDRyxzQkFBc0I7R0FDdEIsWUFBWTtHQUNaLHFCQUFxQjtHQUNyQixjQUFjO0dBQ2QsZ0JBQWdCO0dBQ2hCLGlCQUFpQjtBQUNwQjs7QUFFQTtHQUNHLGFBQWE7R0FDYixxQ0FBcUM7R0FDckMsZUFBZTtBQUNsQjs7QUFFQTtHQUNHLFdBQVc7R0FDWCw0QkFBNEI7QUFDL0I7O0FBRUE7R0FDRyxTQUFTO0FBQ1o7O0FBRUE7R0FDRyxjQUFjO0FBQ2pCIiwiZmlsZSI6Im1ha2V1c2VydmlzaXQuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5jb250ZW50IHtcclxuICAgZGlzcGxheTogZ3JpZFxyXG59XHJcblxyXG4uY29udGVudCBoMSB7XHJcbiAgIG1hcmdpbi10b3A6IDVyZW07XHJcbiAgIGZvbnQtc2l6ZTogM3JlbTtcclxuICAgbWFyZ2luLWxlZnQ6IDVyZW07XHJcbn1cclxuXHJcbi5kaXZfYnV0dG9ucyB7XHJcbiAgIGRpc3BsYXk6IGdyaWQ7XHJcbiAgIG1hcmdpbi10b3A6IDJyZW07XHJcbiAgIGdyaWQtdGVtcGxhdGUtY29sdW1uczogcmVwZWF0KDIsIDFmcik7XHJcbn1cclxuXHJcbmJ1dHRvbiB7IGN1cnNvcjogcG9pbnRlcjsgfVxyXG4gXHJcbi5idG4ge1xyXG4gICBqdXN0aWZ5LXNlbGY6IGNlbnRlcjtcclxuICAgZm9udC1zaXplOiAxLjVyZW07XHJcbiAgIGJvcmRlci1yYWRpdXM6IDA7XHJcbiAgIGJvcmRlcjogMDtcclxuICAgYmFja2dyb3VuZC1jb2xvcjogI0ZGNzg3ODtcclxuICAgaGVpZ2h0OiAyLjVyZW07XHJcbiAgIHBhZGRpbmc6IDFyZW07XHJcbiAgIGxpbmUtaGVpZ2h0OiAwcmVtO1xyXG4gICB3aWR0aDogZml0LWNvbnRlbnQ7XHJcbn1cclxuIFxyXG4uYnRuOmhvdmVyIHtcclxuICAgYmFja2dyb3VuZC1jb2xvcjogI0JCQjtcclxufVxyXG5cclxuLmdyZXlfbGlzdCB7XHJcbiAgIGJhY2tncm91bmQtY29sb3I6ICM4ODg7XHJcbiAgIGZvbnQtc2l6ZTogMmVtO1xyXG4gICBoZWlnaHQ6IDUwdmg7XHJcbiAgIG1hcmdpbjogMXJlbSAycmVtO1xyXG4gICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbn1cclxuXHJcbi5saWdodGVyIHtcclxuICAgYmFja2dyb3VuZC1jb2xvcjogI0JCQjtcclxuICAgaGVpZ2h0OiAyN3ZoO1xyXG4gICBib3JkZXItcmFkaXVzOiAxLjVyZW07XHJcbiAgIG1hcmdpbjogMC41cmVtO1xyXG4gICB0ZXh0LWFsaWduOiBsZWZ0O1xyXG4gICBmb250LXNpemU6IDEuNHJlbTtcclxufVxyXG5cclxubGkge1xyXG4gICBkaXNwbGF5OiBncmlkO1xyXG4gICBncmlkLXRlbXBsYXRlLWNvbHVtbnM6IHJlcGVhdCgzLCAxZnIpO1xyXG4gICBmb250LXNpemU6IDJyZW07XHJcbn1cclxuXHJcbi5ncmV5X2xpc3QgaW5wdXQge1xyXG4gICB3aWR0aDogN3JlbTtcclxuICAgbWFyZ2luOiAxLjVyZW0gM3JlbSAxLjVyZW0gMDtcclxufVxyXG5cclxuLmxpZ2h0ZXIgaW5wdXQge1xyXG4gICBtYXJnaW46IDA7XHJcbn1cclxuXHJcbmxhYmVsIHtcclxuICAgbWFyZ2luOiAwLjVyZW07XHJcbn0iXX0= */"] });
+    } }, directives: [_angular_forms__WEBPACK_IMPORTED_MODULE_0__["ɵangular_packages_forms_forms_ba"], _angular_forms__WEBPACK_IMPORTED_MODULE_0__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_0__["FormGroupDirective"], _angular_forms__WEBPACK_IMPORTED_MODULE_0__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_0__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_0__["FormControlName"], _angular_common__WEBPACK_IMPORTED_MODULE_5__["NgForOf"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterLink"], _angular_forms__WEBPACK_IMPORTED_MODULE_0__["RadioControlValueAccessor"]], styles: [".content[_ngcontent-%COMP%] {\r\n   display: grid\r\n}\r\n\r\n.content[_ngcontent-%COMP%]   h1[_ngcontent-%COMP%] {\r\n   margin-top: 5rem;\r\n   font-size: 3rem;\r\n   margin-left: 5rem;\r\n}\r\n\r\n.div_buttons[_ngcontent-%COMP%] {\r\n   display: grid;\r\n   margin-top: 4rem;\r\n   grid-template-columns: repeat(2, 1fr);\r\n}\r\n\r\nbutton[_ngcontent-%COMP%] { cursor: pointer; }\r\n\r\n.btn[_ngcontent-%COMP%] {\r\n   justify-self: center;\r\n   font-size: 1.5rem;\r\n   border-radius: 0;\r\n   border: 0;\r\n   background-color: #FF7878;\r\n   height: 2.5rem;\r\n   padding: 1rem;\r\n   line-height: 0rem;\r\n   width: -moz-fit-content;\r\n   width: fit-content;\r\n}\r\n\r\n.btn[_ngcontent-%COMP%]:hover {\r\n   background-color: #BBB;\r\n}\r\n\r\n.grey_list[_ngcontent-%COMP%] {\r\n   background-color: #888;\r\n   font-size: 2em;\r\n   height: 50vh;\r\n   margin: 1rem 2rem;\r\n   text-align: center;\r\n}\r\n\r\n.lighter[_ngcontent-%COMP%] {\r\n   background-color: #BBB;\r\n   height: 27vh;\r\n   border-radius: 1.5rem;\r\n   margin: 0.5rem;\r\n   text-align: left;\r\n   font-size: 1.4rem;\r\n}\r\n\r\nli[_ngcontent-%COMP%] {\r\n   display: grid;\r\n   grid-template-columns: repeat(3, 1fr);\r\n   font-size: 2rem;\r\n}\r\n\r\n.grey_list[_ngcontent-%COMP%]   input[_ngcontent-%COMP%] {\r\n   width: 7rem;\r\n   margin: 1.5rem 3rem 1.5rem 0;\r\n}\r\n\r\n.lighter[_ngcontent-%COMP%]   input[_ngcontent-%COMP%] {\r\n   margin: 0;\r\n}\r\n\r\nlabel[_ngcontent-%COMP%] {\r\n   margin: 0.5rem;\r\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1ha2V1c2VydmlzaXQuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtHQUNHO0FBQ0g7O0FBRUE7R0FDRyxnQkFBZ0I7R0FDaEIsZUFBZTtHQUNmLGlCQUFpQjtBQUNwQjs7QUFFQTtHQUNHLGFBQWE7R0FDYixnQkFBZ0I7R0FDaEIscUNBQXFDO0FBQ3hDOztBQUVBLFNBQVMsZUFBZSxFQUFFOztBQUUxQjtHQUNHLG9CQUFvQjtHQUNwQixpQkFBaUI7R0FDakIsZ0JBQWdCO0dBQ2hCLFNBQVM7R0FDVCx5QkFBeUI7R0FDekIsY0FBYztHQUNkLGFBQWE7R0FDYixpQkFBaUI7R0FDakIsdUJBQWtCO0dBQWxCLGtCQUFrQjtBQUNyQjs7QUFFQTtHQUNHLHNCQUFzQjtBQUN6Qjs7QUFFQTtHQUNHLHNCQUFzQjtHQUN0QixjQUFjO0dBQ2QsWUFBWTtHQUNaLGlCQUFpQjtHQUNqQixrQkFBa0I7QUFDckI7O0FBRUE7R0FDRyxzQkFBc0I7R0FDdEIsWUFBWTtHQUNaLHFCQUFxQjtHQUNyQixjQUFjO0dBQ2QsZ0JBQWdCO0dBQ2hCLGlCQUFpQjtBQUNwQjs7QUFFQTtHQUNHLGFBQWE7R0FDYixxQ0FBcUM7R0FDckMsZUFBZTtBQUNsQjs7QUFFQTtHQUNHLFdBQVc7R0FDWCw0QkFBNEI7QUFDL0I7O0FBRUE7R0FDRyxTQUFTO0FBQ1o7O0FBRUE7R0FDRyxjQUFjO0FBQ2pCIiwiZmlsZSI6Im1ha2V1c2VydmlzaXQuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5jb250ZW50IHtcclxuICAgZGlzcGxheTogZ3JpZFxyXG59XHJcblxyXG4uY29udGVudCBoMSB7XHJcbiAgIG1hcmdpbi10b3A6IDVyZW07XHJcbiAgIGZvbnQtc2l6ZTogM3JlbTtcclxuICAgbWFyZ2luLWxlZnQ6IDVyZW07XHJcbn1cclxuXHJcbi5kaXZfYnV0dG9ucyB7XHJcbiAgIGRpc3BsYXk6IGdyaWQ7XHJcbiAgIG1hcmdpbi10b3A6IDRyZW07XHJcbiAgIGdyaWQtdGVtcGxhdGUtY29sdW1uczogcmVwZWF0KDIsIDFmcik7XHJcbn1cclxuXHJcbmJ1dHRvbiB7IGN1cnNvcjogcG9pbnRlcjsgfVxyXG4gXHJcbi5idG4ge1xyXG4gICBqdXN0aWZ5LXNlbGY6IGNlbnRlcjtcclxuICAgZm9udC1zaXplOiAxLjVyZW07XHJcbiAgIGJvcmRlci1yYWRpdXM6IDA7XHJcbiAgIGJvcmRlcjogMDtcclxuICAgYmFja2dyb3VuZC1jb2xvcjogI0ZGNzg3ODtcclxuICAgaGVpZ2h0OiAyLjVyZW07XHJcbiAgIHBhZGRpbmc6IDFyZW07XHJcbiAgIGxpbmUtaGVpZ2h0OiAwcmVtO1xyXG4gICB3aWR0aDogZml0LWNvbnRlbnQ7XHJcbn1cclxuIFxyXG4uYnRuOmhvdmVyIHtcclxuICAgYmFja2dyb3VuZC1jb2xvcjogI0JCQjtcclxufVxyXG5cclxuLmdyZXlfbGlzdCB7XHJcbiAgIGJhY2tncm91bmQtY29sb3I6ICM4ODg7XHJcbiAgIGZvbnQtc2l6ZTogMmVtO1xyXG4gICBoZWlnaHQ6IDUwdmg7XHJcbiAgIG1hcmdpbjogMXJlbSAycmVtO1xyXG4gICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbn1cclxuXHJcbi5saWdodGVyIHtcclxuICAgYmFja2dyb3VuZC1jb2xvcjogI0JCQjtcclxuICAgaGVpZ2h0OiAyN3ZoO1xyXG4gICBib3JkZXItcmFkaXVzOiAxLjVyZW07XHJcbiAgIG1hcmdpbjogMC41cmVtO1xyXG4gICB0ZXh0LWFsaWduOiBsZWZ0O1xyXG4gICBmb250LXNpemU6IDEuNHJlbTtcclxufVxyXG5cclxubGkge1xyXG4gICBkaXNwbGF5OiBncmlkO1xyXG4gICBncmlkLXRlbXBsYXRlLWNvbHVtbnM6IHJlcGVhdCgzLCAxZnIpO1xyXG4gICBmb250LXNpemU6IDJyZW07XHJcbn1cclxuXHJcbi5ncmV5X2xpc3QgaW5wdXQge1xyXG4gICB3aWR0aDogN3JlbTtcclxuICAgbWFyZ2luOiAxLjVyZW0gM3JlbSAxLjVyZW0gMDtcclxufVxyXG5cclxuLmxpZ2h0ZXIgaW5wdXQge1xyXG4gICBtYXJnaW46IDA7XHJcbn1cclxuXHJcbmxhYmVsIHtcclxuICAgbWFyZ2luOiAwLjVyZW07XHJcbn0iXX0= */"] });
 
 
 /***/ }),
@@ -634,9 +662,9 @@ function AdminhistoryComponent_li_5_Template(rf, ctx) { if (rf & 1) {
 } if (rf & 2) {
     const visit_r1 = ctx.$implicit;
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](visit_r1.userr.Name);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](visit_r1.Customerr.Name);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](visit_r1.userr.LastName);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](visit_r1.Customerr.LastName);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](visit_r1.Ddate);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
@@ -652,7 +680,7 @@ class AdminhistoryComponent {
         this.showVisits();
     }
     showVisits() {
-        this.service.getAllVisits().subscribe(res => this.visits = res);
+        this.service.visitsall().subscribe(res => this.visits = res);
     }
     changeStatus(id) {
         this.service.changeStatus(id, { Status: 'W' }).subscribe(res => {
@@ -737,7 +765,7 @@ class HistoryComponent {
         this.showPastVisits();
     }
     showPastVisits() {
-        this.service.getVisitsW(this.userData.UserId).subscribe(res => this.visitsW = res);
+        this.service.visitsw(this.userData.CustomerId).subscribe(res => this.visitsW = res);
     }
 }
 HistoryComponent.ɵfac = function HistoryComponent_Factory(t) { return new (t || HistoryComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_data_service__WEBPACK_IMPORTED_MODULE_1__["DataService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_shared_service__WEBPACK_IMPORTED_MODULE_2__["SharedService"])); };
@@ -811,23 +839,33 @@ class UserpanelComponent {
         this.dataService = dataService;
         this.service = service;
         this.userData = this.dataService.sharedData;
+        this.sum = 0;
     }
     ngOnInit() {
         this.refreshVisits();
         this.getServicee();
     }
     refreshVisits() {
-        this.service.getVisits(this.userData.UserId).subscribe(res => this.visits = res);
+        this.service.visits({ CustomerId: this.userData.CustomerId }).subscribe(res => {
+            this.visits = res;
+            console.log(this.visits);
+            let a = 0;
+            this.sum = 0;
+            while (this.visits[a].servicee.Price != undefined) {
+                this.sum += this.visits[a].servicee.Price;
+                a++;
+            }
+        });
     }
     getServicee() {
-        this.service.getServices().subscribe(res => this.dataService.servicesData = res);
+        this.service.services().subscribe(res => this.dataService.servicesData = res);
     }
     delVisit(visit_id) {
         this.service.delVisit(visit_id).subscribe(res => this.refreshVisits());
     }
 }
 UserpanelComponent.ɵfac = function UserpanelComponent_Factory(t) { return new (t || UserpanelComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_data_service__WEBPACK_IMPORTED_MODULE_1__["DataService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_shared_service__WEBPACK_IMPORTED_MODULE_2__["SharedService"])); };
-UserpanelComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: UserpanelComponent, selectors: [["app-userpanel"]], decls: 15, vars: 3, consts: [[1, "content"], [1, "div_buttons"], ["routerLink", "/makevisit", 1, "btn"], ["routerLink", "/visithistory", 1, "btn"], ["routerLink", "/login", 1, "btn"], [1, "grey_list"], [4, "ngFor", "ngForOf"], [1, "date"], [1, "type"], [3, "click"]], template: function UserpanelComponent_Template(rf, ctx) { if (rf & 1) {
+UserpanelComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: UserpanelComponent, selectors: [["app-userpanel"]], decls: 17, vars: 4, consts: [[1, "content"], [1, "div_buttons"], ["routerLink", "/makevisit", 1, "btn"], ["routerLink", "/visithistory", 1, "btn"], ["routerLink", "/login", 1, "btn"], [1, "grey_list"], [4, "ngFor", "ngForOf"], [1, "date"], [1, "type"], [3, "click"]], template: function UserpanelComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "h1");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2);
@@ -849,6 +887,9 @@ UserpanelComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefin
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "ul");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](14, UserpanelComponent_li_14_Template, 7, 2, "li", 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](15, "h3");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](16);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -857,6 +898,8 @@ UserpanelComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefin
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate2"]("Witaj, ", ctx.userData.Name, " ", ctx.userData.LastName, "");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](12);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.visits);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("Suma op\u0142at za wizyty: ", ctx.sum, " z\u0142");
     } }, directives: [_angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterLink"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgForOf"]], styles: [".content[_ngcontent-%COMP%] {\r\n   display: grid\r\n}\r\n\r\n.content[_ngcontent-%COMP%]   h1[_ngcontent-%COMP%] {\r\n   margin-top: 5rem;\r\n   font-size: 3rem;\r\n   margin-left: 5rem;\r\n}\r\n\r\n.div_buttons[_ngcontent-%COMP%] {\r\n   display: grid;\r\n   margin-top: 2rem;\r\n   grid-template-columns: repeat(3, 1fr);\r\n}\r\n\r\nbutton[_ngcontent-%COMP%] { cursor: pointer; }\r\n\r\n.btn[_ngcontent-%COMP%] {\r\n   justify-self: center;\r\n   font-size: 1.5rem;\r\n   border-radius: 0;\r\n   border: 0;\r\n   background-color: #FF7878;\r\n   height: 2.5rem;\r\n   padding: 1rem;\r\n   line-height: 0rem;\r\n   width: -moz-fit-content;\r\n   width: fit-content;\r\n}\r\n\r\n.btn[_ngcontent-%COMP%]:hover {\r\n   background-color: #BBB;\r\n}\r\n\r\n.grey_list[_ngcontent-%COMP%] {\r\n   background-color: #888;\r\n   font-size: 2em;\r\n   text-align: center;\r\n   height: 50vh;\r\n   margin: 1rem 2rem;\r\n}\r\n\r\nul[_ngcontent-%COMP%] {\r\n   background-color: #BBB;\r\n   height: 37vh;\r\n   border-radius: 1.5rem;\r\n   margin: 0.5rem;\r\n}\r\n\r\nli[_ngcontent-%COMP%] {\r\n   display: grid;\r\n   grid-template-columns: repeat(3, 1fr);\r\n   font-size: 2rem;\r\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInVzZXJwYW5lbC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0dBQ0c7QUFDSDs7QUFFQTtHQUNHLGdCQUFnQjtHQUNoQixlQUFlO0dBQ2YsaUJBQWlCO0FBQ3BCOztBQUVBO0dBQ0csYUFBYTtHQUNiLGdCQUFnQjtHQUNoQixxQ0FBcUM7QUFDeEM7O0FBRUEsU0FBUyxlQUFlLEVBQUU7O0FBRTFCO0dBQ0csb0JBQW9CO0dBQ3BCLGlCQUFpQjtHQUNqQixnQkFBZ0I7R0FDaEIsU0FBUztHQUNULHlCQUF5QjtHQUN6QixjQUFjO0dBQ2QsYUFBYTtHQUNiLGlCQUFpQjtHQUNqQix1QkFBa0I7R0FBbEIsa0JBQWtCO0FBQ3JCOztBQUVBO0dBQ0csc0JBQXNCO0FBQ3pCOztBQUVBO0dBQ0csc0JBQXNCO0dBQ3RCLGNBQWM7R0FDZCxrQkFBa0I7R0FDbEIsWUFBWTtHQUNaLGlCQUFpQjtBQUNwQjs7QUFFQTtHQUNHLHNCQUFzQjtHQUN0QixZQUFZO0dBQ1oscUJBQXFCO0dBQ3JCLGNBQWM7QUFDakI7O0FBRUE7R0FDRyxhQUFhO0dBQ2IscUNBQXFDO0dBQ3JDLGVBQWU7QUFDbEIiLCJmaWxlIjoidXNlcnBhbmVsLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuY29udGVudCB7XHJcbiAgIGRpc3BsYXk6IGdyaWRcclxufVxyXG5cclxuLmNvbnRlbnQgaDEge1xyXG4gICBtYXJnaW4tdG9wOiA1cmVtO1xyXG4gICBmb250LXNpemU6IDNyZW07XHJcbiAgIG1hcmdpbi1sZWZ0OiA1cmVtO1xyXG59XHJcblxyXG4uZGl2X2J1dHRvbnMge1xyXG4gICBkaXNwbGF5OiBncmlkO1xyXG4gICBtYXJnaW4tdG9wOiAycmVtO1xyXG4gICBncmlkLXRlbXBsYXRlLWNvbHVtbnM6IHJlcGVhdCgzLCAxZnIpO1xyXG59XHJcblxyXG5idXR0b24geyBjdXJzb3I6IHBvaW50ZXI7IH1cclxuIFxyXG4uYnRuIHtcclxuICAganVzdGlmeS1zZWxmOiBjZW50ZXI7XHJcbiAgIGZvbnQtc2l6ZTogMS41cmVtO1xyXG4gICBib3JkZXItcmFkaXVzOiAwO1xyXG4gICBib3JkZXI6IDA7XHJcbiAgIGJhY2tncm91bmQtY29sb3I6ICNGRjc4Nzg7XHJcbiAgIGhlaWdodDogMi41cmVtO1xyXG4gICBwYWRkaW5nOiAxcmVtO1xyXG4gICBsaW5lLWhlaWdodDogMHJlbTtcclxuICAgd2lkdGg6IGZpdC1jb250ZW50O1xyXG59XHJcbiBcclxuLmJ0bjpob3ZlciB7XHJcbiAgIGJhY2tncm91bmQtY29sb3I6ICNCQkI7XHJcbn1cclxuXHJcbi5ncmV5X2xpc3Qge1xyXG4gICBiYWNrZ3JvdW5kLWNvbG9yOiAjODg4O1xyXG4gICBmb250LXNpemU6IDJlbTtcclxuICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gICBoZWlnaHQ6IDUwdmg7XHJcbiAgIG1hcmdpbjogMXJlbSAycmVtO1xyXG59XHJcblxyXG51bCB7XHJcbiAgIGJhY2tncm91bmQtY29sb3I6ICNCQkI7XHJcbiAgIGhlaWdodDogMzd2aDtcclxuICAgYm9yZGVyLXJhZGl1czogMS41cmVtO1xyXG4gICBtYXJnaW46IDAuNXJlbTtcclxufVxyXG5cclxubGkge1xyXG4gICBkaXNwbGF5OiBncmlkO1xyXG4gICBncmlkLXRlbXBsYXRlLWNvbHVtbnM6IHJlcGVhdCgzLCAxZnIpO1xyXG4gICBmb250LXNpemU6IDJyZW07XHJcbn0iXX0= */"] });
 
 
@@ -882,39 +925,19 @@ class SharedService {
         this.http = http;
         this.APIUrl = 'https://fryzjerprojekt.herokuapp.com';
     }
-    getUsers() {
-        return this.http.get(this.APIUrl + '/user');
-    }
-    getUser(x) {
-        return this.http.post(this.APIUrl + '/user', x);
-    }
-    addUser(x) {
-        return this.http.post(this.APIUrl + '/register', x);
-    }
-    loginUser(x) {
-        return this.http.post(this.APIUrl + '/login', x);
-    }
-    getVisits(id) {
-        return this.http.get(this.APIUrl + '/visit/' + id);
-    }
-    getAllVisits() {
-        return this.http.get(this.APIUrl + '/vall');
-    }
-    getVisitsW(id) {
-        return this.http.get(this.APIUrl + '/visitW/' + id);
-    }
-    addVisit(x) {
-        return this.http.post(this.APIUrl + '/visit', x);
-    }
-    getServices() {
-        return this.http.get(this.APIUrl + '/servicee');
-    }
-    delVisit(id) {
-        return this.http.delete(this.APIUrl + '/visit/' + id);
-    }
-    changeStatus(id, x) {
-        return this.http.put(this.APIUrl + '/visit/' + id + '/', x);
-    }
+    registerLogin(x) { return this.http.post(this.APIUrl + '/registerlogin', x); }
+    register(y) { return this.http.post(this.APIUrl + '/register', y); }
+    login(x) { return this.http.post(this.APIUrl + '/login', x); }
+    auth(x) { return this.http.post(this.APIUrl + '/auth', x); }
+    visits(x) { return this.http.post(this.APIUrl + '/nextvisit', x); }
+    visitsw(id) { return this.http.get(this.APIUrl + '/visitW/' + id + '/'); }
+    makevisit(x) { return this.http.post(this.APIUrl + '/visit', x); }
+    services() { return this.http.get(this.APIUrl + '/servicee'); }
+    visitsall() { return this.http.get(this.APIUrl + '/vall'); }
+    changeStatus(id, x) { return this.http.put(this.APIUrl + '/visit/' + id + '/', x); }
+    delVisit(id) { return this.http.delete(this.APIUrl + '/visit/' + id); }
+    getUser(x) { return this.http.post(this.APIUrl + '/customerunr', x); }
+    checkdate(x) { return this.http.post(this.APIUrl + '/checkdate', x); }
 }
 SharedService.ɵfac = function SharedService_Factory(t) { return new (t || SharedService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"])); };
 SharedService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: SharedService, factory: SharedService.ɵfac, providedIn: 'root' });
@@ -1013,11 +1036,15 @@ class LoginComponent {
         });
     }
     submitHandler() {
-        const x = { Email: this.loginForm.get('email').value, Pass: this.loginForm.get('pass').value };
-        this.service.loginUser(x).subscribe(res => {
+        var x = { Email: this.loginForm.get('email').value, Pass: this.loginForm.get('pass').value };
+        this.service.login(x).subscribe(res => {
             if (res != "Failed to Add") {
-                this.dataService.sharedData = res[0];
-                this.router.navigate(['../userpanel']);
+                var x = { UserId: res[0].UserId };
+                this.service.auth(x).subscribe(res => {
+                    this.dataService.sharedData = res[0];
+                    console.log(this.dataService.sharedData);
+                    this.router.navigate(['../userpanel']);
+                });
             }
             else {
                 console.log('login error');

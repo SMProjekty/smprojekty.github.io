@@ -21,6 +21,6 @@ export class HistoryComponent implements OnInit {
   }
 
   showPastVisits() {
-    this.service.getVisitsW(this.userData.UserId).subscribe(res => this.visitsW = res )
+    this.service.visitsw(this.userData.CustomerId).subscribe(res => this.visitsW = res )
   }
 }

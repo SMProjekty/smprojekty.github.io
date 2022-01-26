@@ -10,7 +10,7 @@
 
 .div_buttons {
    display: grid;
-   margin-top: 2rem;
+   margin-top: 4rem;
    grid-template-columns: repeat(2, 1fr);
 }
 
