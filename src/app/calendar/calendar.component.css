@@ -1,0 +1,48 @@
+.photo {
+    margin-top: 40px;
+    width: 100px;
+    border-radius: 50px;
+}
+
+td {
+    font-size: 20px;
+    text-align: left;
+    padding: 10px;
+}
+
+th {
+    text-align: left;
+    font-size: 20px;
+    color: rgb(33,37,41);
+}
+
+p.name {
+    font-size: 1.4rem;
+}
+
+.brighter {
+    filter: brightness(50%);
+}
+
+.row-to-end {
+    height: 100vh;
+}
+
+.photo {
+    width: 100px;
+    height: 100px;
+}
+
+.hide {
+    display: none;
+}
+
+.info-table {
+    font-size: 2rem;
+    text-align: center;
+}
+
+.spinner-border {
+    margin-top: 2rem;
+    margin-left: 50%;
+}
