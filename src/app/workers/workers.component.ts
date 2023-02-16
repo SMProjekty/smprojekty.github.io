@@ -59,6 +59,7 @@ export class WorkersComponent implements OnInit{
   getListOfColors() {
     this.service.listOfColors().subscribe(res => {
       this.listOfColors = res;
+      console.log(this.listOfColors);
     });
   }
 
@@ -95,14 +96,19 @@ export class WorkersComponent implements OnInit{
     fd.append('content', JSON.stringify(post_data));
     console.log(post_data);
     this.service.addWorker(fd).subscribe(res => {
+      console.log(res);
+      this.getListOfWorkers();
+      this.getListOfColors();
     });
   }
 
   editWorker() {
     const fd = new FormData();
-    if (this.event.target.files[0] != null || this.event.target.files[0] != undefined) {
-      const photo = this.event.target.files[0];
-      fd.append('photo', photo);
+    if (this.event != undefined) {
+      if (this.event.target.files[0] != null || this.event.target.files[0] != undefined) {
+        const photo = this.event.target.files[0];
+        fd.append('photo', photo);
+      }
     }
     const post_data = {
       "name": this.addNewWorker.get('name')?.value != null ? this.addNewWorker.get('name')?.value : this.modalData['name'],
@@ -114,17 +120,6 @@ export class WorkersComponent implements OnInit{
     this.service.editWorker(this.workerIdToUpdate, fd).subscribe(res => {
       console.log(res);
     });
-  }
-
-  onFileChanged(event: any) {
-    const file = event.target.files[0];
-    console.log('File input', file);
-    const fd = new FormData();
-    fd.append('file', file);
-    fd.append('content', JSON.stringify({test: 'I am a test !'}));
-    this.service.saveImages(fd).subscribe((event => {
-        })
-    );
   }
 
   pickColor(code: string) {
@@ -139,5 +134,4 @@ export class WorkersComponent implements OnInit{
         color.classList.add('color-darker');
     });
   }
-
 }

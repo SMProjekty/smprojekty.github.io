@@ -64,11 +64,14 @@ export class SharedService {
   //urlopy
   addVacation(x: any) { return this.http.post(this.APIUrl + '/vacation/add', x); }
   getVacation(date: string) { return this.http.get(this.APIUrl + '/vacation/' + date); }
+  deleteVacation(id: number) { return this.http.delete(this.APIUrl + '/vacation/delete/' + id); }
+  updateVacation(x: any, id: number) { return this.http.put(this.APIUrl + '/vacation/update/' + id, x); }
 
   //raporty
   getRaport(x: any) { return this.http.post(this.APIUrl + '/raports', x); }
 
   saveImages(fd: any) { return this.http.post(this.APIUrl + '/photo', fd); }
+
 
 
 }

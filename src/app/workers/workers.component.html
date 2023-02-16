@@ -2,53 +2,53 @@
 	<div class="row">
 		<div class="col">
 			<nav class="navbar bg-dark tmenu">
-				<a class="navbar-brand nav-offers" href="/editDelService"><h4><i class="bi bi-scissors"></i></h4></a>
-				<a class="navbar-brand nav-visits" href="/delVisit"><h4><i class="bi bi-calendar-check-fill"></i></h4></a>
-				<a class="navbar-brand nav-vacations" href="/vacations"><h4><i class="bi bi-airplane-fill"></i></h4></a>
-				<a class="navbar-brand nav-workers navbar-active" href="/workers"><h4><i class="bi bi-people-fill"></i></h4></a>
-				<a class="navbar-brand nav-reports" href="/raports"><h4><i class="bi bi-database-fill-check"></i></h4></a>
-				<a class="navbar-brand nav-logout" href="/main"><h4><i class="bi bi-box-arrow-left"></i></h4></a>
+				<a class="navbar-brand nav-offers" routerLink="/editDelService" routerLinkActive="active"><h4><i class="bi bi-scissors"></i></h4></a>
+				<a class="navbar-brand nav-visits" routerLink="/delVisit" routerLinkActive="active"><h4><i class="bi bi-calendar-check-fill"></i></h4></a>
+				<a class="navbar-brand nav-vacations" routerLink="/vacations" routerLinkActive="active"><h4><i class="bi bi-airplane-fill"></i></h4></a>
+				<a class="navbar-brand nav-workers navbar-active" routerLink="/workers" routerLinkActive="active"><h4><i class="bi bi-people-fill"></i></h4></a>
+				<a class="navbar-brand nav-reports" routerLink="/raports" routerLinkActive="active"><h4><i class="bi bi-database-fill-check"></i></h4></a>
+				<a class="navbar-brand nav-logout" routerLink="/main" routerLinkActive="active"><h4><i class="bi bi-box-arrow-left"></i></h4></a>
 			</nav>
 		</div>
 	</div>
     <div class="row">
         <div class="col">
-                <ng-container *ngIf="workers == undefined">
-                    <p class="info-table">Brak pracowników do wyświetlenia!</p>
-                </ng-container>
-                <ng-container *ngIf="workers != undefined && workers.length > 0">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">Zdjęcie</th>
-                                <th scope="col">Imię</th>
-                                <th scope="col">Nazwisko</th>
-                                <th scope="col"></th>
+            <ng-container *ngIf="workers == undefined">
+                <p class="info-table">Brak pracowników do wyświetlenia!</p>
+            </ng-container>
+            <ng-container *ngIf="workers != undefined && workers.length > 0">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Zdjęcie</th>
+                            <th scope="col">Imię</th>
+                            <th scope="col">Nazwisko</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <ng-container *ngFor="let worker of workers;">
+                            <tr class="table-row">
+                                <td><img class="photo" [ngStyle]="{'border-color': worker.color}" style="border: solid 4px;" src="http://3.75.172.118/photo/{{worker.photo}}"></td>
+                                <td>{{ worker.name }}</td>
+                                <td>{{ worker.surname  }}</td>
+                                <td>
+                                    <button type="button" class="btn btn-dark btn-sm" data-bs-toggle="modal" data-bs-target="#editWorkerModal" (click)="dataToModal(worker.id)"><i class="bi bi-pencil-square"></i></button>
+                                    <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"  data-bs-target="#delConfirmModal" (click)="workerIdToModal(worker.id)"><i class="bi bi-trash"></i></button>
+                                </td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            <ng-container *ngFor="let worker of workers;">
-                                <tr class="table-row">
-                                    <td><img class="photo" [ngStyle]="{'border-color': worker.color}" style="border: solid 4px;" src="http://localhost:8000/photo/{{worker.photo}}"></td>
-                                    <td>{{ worker.name }}</td>
-                                    <td>{{ worker.surname  }}</td>
-                                    <td>
-                                        <button type="button" class="btn btn-dark btn-sm" data-bs-toggle="modal" data-bs-target="#editWorkerModal" (click)="dataToModal(worker.id)"><i class="bi bi-pencil-square"></i></button>
-                                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"  data-bs-target="#delConfirmModal" (click)="workerIdToModal(worker.id)"><i class="bi bi-trash"></i></button>
-                                    </td>
-                                </tr>
-                            </ng-container>
-                        </tbody>
-                    </table>
-                </ng-container>
+                        </ng-container>
+                    </tbody>
+                </table>
+            </ng-container>
         </div>
-</div>
-<div class="row">
-    <div class="col col-center">
-        <button type="button" class="btn btn-success btn-width" data-bs-toggle="modal" data-bs-target="#addWorkerModal"><i class="bi bi-person-plus-fill"></i> Dodaj pracownika</button>
+    </div>
+    <div class="row">
+        <div class="col col-center">
+            <button type="button" class="btn btn-success btn-width" data-bs-toggle="modal" data-bs-target="#addWorkerModal"><i class="bi bi-person-plus-fill"></i> Dodaj pracownika</button>
+        </div>
     </div>
 </div>
-
 <!-- Modal potwierdzenie usunięcia pracownika -->
 <div class="modal fade" id="delConfirmModal" tabindex="-1" aria-labelledby="delConfirmModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -86,7 +86,7 @@
 
                     <div class="form-group">
                         <label for="formGroupPhotoInput">Zdjęcie:</label>
-                        <img *ngIf="modalData.photo != null" class="photo" src="http://localhost:8000/photo/{{ modalData.photo }}">
+                        <img *ngIf="modalData.photo != null" class="photo" src="http://3.75.172.118/photo/{{ modalData.photo }}">
                         <input type="file" class="form-control" id="file" formControlName="file" (change)="event = $event">
                     </div>
 

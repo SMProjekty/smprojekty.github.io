@@ -15,18 +15,19 @@ import { CalendarObjectComponent } from './calendar-object/calendar-object.compo
 import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
-  {path: '', component: MainComponent},
-  {path: 'main', component: MainComponent},
-  {path: 'makeVisit', component: MakeVisitComponent},
-  {path: 'calendar', component: CalendarComponent},
-  {path: 'adminLogin', component: AdminLoginComponent},
-  {path: 'adminMain', component: AdminMainComponent}, //zablokowac bezposrednie wejscie na panel admina
-  {path: 'addService', component: AddServiceComponent, canActivate: [AuthGuard]},
-  {path: 'editDelService', component: EditDelServiceComponent, canActivate: [AuthGuard]},
-  {path: 'delVisit', component: DelVisitComponent, canActivate: [AuthGuard]},
-  {path: 'vacations', component: VacationsComponent, canActivate: [AuthGuard]},
-  {path: 'raports', component: RaportsComponent},
-  {path: 'workers', component: WorkersComponent, canActivate: [AuthGuard]},
+  {path: "", component: MainComponent},
+  {path: "main", component: MainComponent},
+  {path: "makeVisit", component: MakeVisitComponent},
+  {path: "calendar", component: CalendarComponent},
+  {path: "adminLogin", component: AdminLoginComponent},
+  {path: "adminMain", component: AdminMainComponent}, //zablokowac bezposrednie wejscie na panel admina
+  {path: "addService", component: AddServiceComponent, canActivate: [AuthGuard]},
+  {path: "editDelService", component: EditDelServiceComponent, canActivate: [AuthGuard]},
+  {path: "delVisit", component: DelVisitComponent, canActivate: [AuthGuard]},
+  {path: "vacations", component: VacationsComponent, canActivate: [AuthGuard]},
+  {path: "raports", component: RaportsComponent},
+  {path: "workers", component: WorkersComponent, canActivate: [AuthGuard]},
+  {path: "**", component: WorkersComponent},
 
   {path: 'calendarObject', component: CalendarObjectComponent}
 ];
